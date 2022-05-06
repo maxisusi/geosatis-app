@@ -1,0 +1,22 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 1.5em;
+  background-color: #3a57e8;
+  color: white;
+}
+.header-logo {
+  width: 25%;
+}
+
+.header-menu {
+  display: flex;
+  align-items: baseline;
+  gap: 25px;
+}
+
+.header-menu-info {
+  font-weight: 100;
+}
