@@ -11,3 +11,13 @@
   width: 100%;
   max-width: 1200px;
 }
+
+.app-body-header {
+  height: 10%;
+  width: 100%;
+}
+
+.app-body-content {
+  height: 80%;
+  width: 100%;
+}
