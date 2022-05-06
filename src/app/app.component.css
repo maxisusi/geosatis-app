@@ -16,9 +16,24 @@
   margin-top: 5%;
   height: 10%;
   width: 100%;
+  margin-bottom: 50px;
 }
 
 .app-body-content {
   height: 80%;
   width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+.app-body-offender-map {
+  height: 100%;
+  flex: 0.7;
+  background-color: gray;
+}
+
+.app-body-offender-list {
+  height: 100%;
+  flex: 0.3;
+  background-color: red;
 }
