@@ -1,0 +1,24 @@
+.app-body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.app-body-container {
+  padding: 2em;
+  height: 100%;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.app-body-header {
+  margin-top: 5%;
+  height: 10%;
+  width: 100%;
+}
+
+.app-body-content {
+  height: 80%;
+  width: 100%;
+}

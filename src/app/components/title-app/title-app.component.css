@@ -1,0 +1,26 @@
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-block h1 {
+  font-size: 2.5rem;
+}
+
+.title-block p {
+  color: #8a92a6;
+}
+
+.title-button-parent {
+  display: flex;
+  gap: 20px;
+  font-size: 1rem;
+  background-color: #3a57e8;
+  color: white;
+  padding: 1.2em;
+  border-radius: 10px;
+  cursor: pointer;
+  align-items: center;
+  border-style: none;
+}
