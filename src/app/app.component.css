@@ -29,11 +29,9 @@
 .app-body-offender-map {
   height: 100%;
   flex: 0.7;
-  background-color: gray;
 }
 
 .app-body-offender-list {
   height: 100%;
-  flex: 0.3;
-  background-color: red;
+  flex: 0.35;
 }
