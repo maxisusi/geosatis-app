@@ -1,34 +1,3 @@
 .offenders {
   width: 100%;
-
-  display: flex;
-}
-
-.offender-card {
-  width: 100%;
-  display: flex;
-  padding: 1.5em;
-  justify-content: space-between;
-  align-items: center;
-
-  border: 1px solid #dee2e6;
-  border-radius: 10px;
-}
-
-.offender-face {
-  background-color: gray;
-  width: 80px;
-  height: 80px;
-  border-radius: 100%;
-}
-
-.offender-info-main,
-.offender-info-secondary {
-  margin-bottom: 0;
-}
-
-.offender-info-wrapper {
-  display: flex;
-  gap: 25px;
-  align-items: center;
 }
