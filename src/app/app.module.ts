@@ -15,6 +15,7 @@ import { OffendersPaginationComponent } from './components/offenders-pagination/
 import { CreateOffendersModalComponent } from './components/create-offenders-modal/create-offenders-modal.component';
 import { OffendersService } from './services/offenders.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     LeafletModule,
     ReactiveFormsModule,
+    StoreModule.forRoot({}, {}),
   ],
   providers: [OffendersService],
   bootstrap: [AppComponent],
