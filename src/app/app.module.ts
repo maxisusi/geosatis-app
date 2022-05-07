@@ -11,7 +11,13 @@ import { OffendersComponent } from './components/offenders/offenders.component';
 import { OffendersListComponent } from './components/offenders-list/offenders-list.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, TitleAppComponent, OffendersComponent, OffendersListComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    TitleAppComponent,
+    OffendersComponent,
+    OffendersListComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
