@@ -11,6 +11,7 @@ import { OffendersComponent } from './components/offenders/offenders.component';
 import { OffendersListComponent } from './components/offenders-list/offenders-list.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { OffendersMapComponent } from './components/offenders-map/offenders-map.component';
+import { OffendersPaginationComponent } from './components/offenders-pagination/offenders-pagination.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { OffendersMapComponent } from './components/offenders-map/offenders-map.
     OffendersComponent,
     OffendersListComponent,
     OffendersMapComponent,
+    OffendersPaginationComponent,
   ],
   imports: [
     BrowserModule,
