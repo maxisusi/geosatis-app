@@ -9,7 +9,7 @@
   padding: 2em;
   height: 100%;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
 }
 
 .app-body-header {
@@ -28,12 +28,10 @@
 
 .app-body-offender-map {
   height: 100%;
-  flex: 0.7;
-  background-color: gray;
+  flex: 0.8;
 }
 
 .app-body-offender-list {
   height: 100%;
-  flex: 0.3;
-  background-color: red;
+  flex: 0.25;
 }
