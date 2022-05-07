@@ -9,6 +9,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { TitleAppComponent } from './components/title-app/title-app.component';
 import { OffendersComponent } from './components/offenders/offenders.component';
 import { OffendersListComponent } from './components/offenders-list/offenders-list.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { OffendersMapComponent } from './components/offenders-map/offenders-map.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { OffendersListComponent } from './components/offenders-list/offenders-li
     TitleAppComponent,
     OffendersComponent,
     OffendersListComponent,
+    OffendersMapComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    LeafletModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
