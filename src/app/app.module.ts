@@ -16,6 +16,7 @@ import { CreateOffendersModalComponent } from './components/create-offenders-mod
 import { OffendersService } from './services/offenders.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
+import { offenderReducer } from './store/state/offenders/offenders.reducer';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { StoreModule } from '@ngrx/store';
     MaterialModule,
     LeafletModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ offenders: offenderReducer }),
   ],
   providers: [OffendersService],
   bootstrap: [AppComponent],
