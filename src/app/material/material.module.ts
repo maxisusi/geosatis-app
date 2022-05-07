@@ -8,6 +8,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
 
 import {
   MatFormFieldModule,
@@ -24,6 +26,8 @@ const MaterialComponents = [
   MatInputModule,
   MatDatepickerModule,
   MatMomentDateModule,
+  MatAutocompleteModule,
+  MatSelectModule,
 ];
 
 @NgModule({

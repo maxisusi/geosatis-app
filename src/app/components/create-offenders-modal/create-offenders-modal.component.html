@@ -12,8 +12,14 @@
             <input formControlName="lastName" type="text" matInput placeholder="Last Name*">
             <mat-error>Last Name is mandatory</mat-error>
         </mat-form-field>
+
         <mat-form-field>
-            <input formControlName="location" type="text" matInput placeholder="Location*">
+            <mat-select formControlName="location" placeholder="Select a location">
+                <mat-option>None</mat-option>
+                <ng-container *ngFor="let location of locations">
+                    <mat-option value="{{location.id}}">{{location.value}}</mat-option>
+                </ng-container>
+            </mat-select>
             <mat-error>Location is mandatory</mat-error>
         </mat-form-field>
 
@@ -27,7 +33,7 @@
             <input formControlName="profileImage" matInput placeholder="Profile Image">
         </mat-form-field>
 
-        <button mat-raised-button color="primary" type="submit">Submit</button>
+        <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Submit</button>
 
     </form>
 

@@ -15,4 +15,15 @@ export class OffendersService {
     location: new FormControl('', Validators.required),
     profileImage: new FormControl(''),
   });
+
+  initalizeFormGroup(): void {
+    this.form.setValue({
+      $key: null,
+      fullName: '',
+      lastName: '',
+      birthdate: '',
+      location: '',
+      profileImage: '',
+    });
+  }
 }
