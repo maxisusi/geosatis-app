@@ -1,1 +1,32 @@
-<p>create-offenders-modal works!</p>
+<div class="offenders-form-wrapper">
+
+    <h1>Create New Offender</h1>
+    <form [formGroup]="offenders.form" class="offenders-form">
+        <input type="hidden" formControlName="$key" />
+
+        <mat-form-field>
+            <input formControlName="firstName" type="text" matInput placeholder="First Name*">
+            <mat-error>First Name is mandatory</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input formControlName="lastName" type="text" matInput placeholder="Last Name*">
+            <mat-error>Last Name is mandatory</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input formControlName="location" type="text" matInput placeholder="Location*">
+            <mat-error>Location is mandatory</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input formControlName="birthdate" type="text" matInput placeholder="Birthday Date">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input formControlName="profileImage" matInput placeholder="Profile Image">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+
+    </form>
+
+</div>

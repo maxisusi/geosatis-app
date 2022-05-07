@@ -13,6 +13,8 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { OffendersMapComponent } from './components/offenders-map/offenders-map.component';
 import { OffendersPaginationComponent } from './components/offenders-pagination/offenders-pagination.component';
 import { CreateOffendersModalComponent } from './components/create-offenders-modal/create-offenders-modal.component';
+import { OffendersService } from './services/offenders.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,8 +33,9 @@ import { CreateOffendersModalComponent } from './components/create-offenders-mod
     BrowserAnimationsModule,
     MaterialModule,
     LeafletModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [OffendersService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
