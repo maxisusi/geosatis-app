@@ -1,2 +1,9 @@
-<div style="height: 100%; width: 100%;" leaflet [leafletOptions]="options" [leafletLayersControl]="layersControl">
+<div class="offender-map">
+    <div style="height: 100%; width: 100%; border-radius: 10px;" leaflet [leafletOptions]="options"
+        [leafletLayersControl]="layersControl" [leafletLayers]="layers">
+    </div>
+
+    <mat-slide-toggle color="primary">
+        Show All Offenders
+    </mat-slide-toggle>
 </div>

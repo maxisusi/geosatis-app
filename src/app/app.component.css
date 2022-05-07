@@ -13,17 +13,17 @@
 }
 
 .app-body-header {
-  margin-top: 5%;
-  height: 10%;
+  margin-top: 2%;
+  height: 5vh;
   width: 100%;
   margin-bottom: 50px;
 }
 
 .app-body-content {
-  height: 80%;
+  height: 70vh;
   width: 100%;
   display: flex;
-  gap: 10px;
+  gap: 25px;
 }
 
 .app-body-offender-map {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { circle, latLng, polygon, tileLayer } from 'leaflet';
+import { circle, latLng, marker, polygon, tileLayer } from 'leaflet';
 
 @Component({
   selector: 'app-offenders-map',
@@ -40,6 +40,16 @@ export class OffendersMapComponent implements OnInit {
       ]),
     },
   };
+
+  layers = [
+    circle([46.95, -122], { radius: 5000 }),
+    polygon([
+      [46.8, -121.85],
+      [46.92, -121.92],
+      [46.87, -121.8],
+    ]),
+    marker([46.879966, -121.726909]),
+  ];
   constructor() {}
 
   ngOnInit(): void {}
