@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { CreateOffendersModalComponent } from '../create-offenders-modal/create-offenders-modal.component';
 
 @Component({
   selector: 'app-title-app',
@@ -12,10 +13,9 @@ export class TitleAppComponent implements OnInit {
   ngOnInit(): void {}
 
   openDialog() {
-    console.log('Called');
-    // const dialogRef = this.dialog.open(DialogContentExampleDialog);
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   console.log(`Dialog result: ${result}`);
-    // });
+    const dialogRef = this.dialog.open(CreateOffendersModalComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }
