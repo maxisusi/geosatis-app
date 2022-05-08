@@ -44,8 +44,8 @@ export class OffendersService {
     this.form.reset;
   }
 
-  getOffenders(): Observable<Offender[]> {
-    return this.http.get<Offender[]>(this.apiUrl);
+  getOffenders(index: number): Observable<Offender[]> {
+    return this.http.get<Offender[]>(`${this.apiUrl}?_page=${index}&_limit=5`);
   }
 
   getFormData(): Offender {
