@@ -34,15 +34,16 @@
       "imgURL": "https://source.unsplash.com/800x800/?face"
     },
     {
-      "id": "c0a50c5a-28df-4fac-a488-0ef95c6c145b",
-      "firstName": "John",
-      "lastName": "Lennon",
-      "birthdate": "2022-05-02T22:00:00.000Z",
+      "id": "995206cc-247e-48b6-901b-299537c0b1c4",
+      "firstName": "Max",
+      "lastName": "Balej",
+      "birthdate": "2022-05-17T22:00:00.000Z",
       "profileImage": "",
       "location": {
         "lat": "46.132335832224506 ",
         "long": "7.075798217929714"
-      }
+      },
+      "imgURL": "https://source.unsplash.com/800x800/?face"
     }
   ]
 }

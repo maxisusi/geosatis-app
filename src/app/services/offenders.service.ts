@@ -47,6 +47,7 @@ export class OffendersService {
     const rawFormValue = this.form.getRawValue();
     delete rawFormValue['$key'];
     delete rawFormValue['location'];
+    delete rawFormValue['imageURL'];
 
     const newLocation = {
       lat: '46.132335832224506 ',
@@ -58,6 +59,7 @@ export class OffendersService {
       id: uuidv4(),
       ...rawFormValue,
       location: newLocation,
+      imgURL: 'https://source.unsplash.com/800x800/?face',
     };
 
     return newOffender;
