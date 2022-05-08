@@ -1,3 +1,5 @@
+import { OffenderState } from './state/offenders/offenders.reducer';
+
 export interface AppState {
-  offenders: any;
+  offenders: OffenderState;
 }
