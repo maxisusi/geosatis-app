@@ -28,7 +28,7 @@ export class OffendersService {
   });
 
   initalizeFormGroup(): void {
-    this.form.setValue({
+    this.form.reset({
       $key: null,
       fullName: '',
       lastName: '',
@@ -36,6 +36,12 @@ export class OffendersService {
       location: '',
       profileImage: '',
     });
+  }
+
+  validateForm(): boolean {
+    return this.form.valid;
+
+    this.form.reset;
   }
 
   getOffenders(): Observable<Offender[]> {

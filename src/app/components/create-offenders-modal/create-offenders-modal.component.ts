@@ -36,8 +36,17 @@ export class CreateOffendersModalComponent implements OnInit {
     this.offenders.initalizeFormGroup();
   }
   onSubmit(): void {
-    // this.dialog.closeAll();
+    // * If the form is valid, dispatch data, reset form and close modal
+    if (this.offenders.validateForm()) {
+      this.store.dispatch(
+        addOffender({ payload: this.offenders.getFormData() })
+      );
 
-    this.store.dispatch(addOffender({ payload: this.offenders.getFormData() }));
+      // * Reset form
+      this.offenders.initalizeFormGroup();
+
+      // * Close Modal
+      this.dialog.closeAll();
+    }
   }
 }

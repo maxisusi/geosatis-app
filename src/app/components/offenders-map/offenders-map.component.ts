@@ -56,8 +56,6 @@ export class OffendersMapComponent implements OnInit {
   ngOnInit(): void {
     // Subscribe to get datas from offender store
     this.allOffenders$.subscribe((offenders: Offender[]) => {
-      console.log(offenders);
-
       offenders.map((offender) => {
         const singleMarker = marker(
           [offender.location.lat, offender.location.long],
