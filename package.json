@@ -24,6 +24,7 @@
     "@angular/router": "~13.3.0",
     "@asymmetrik/ngx-leaflet": "^13.0.2",
     "@ngrx/store": "^13.2.0",
+    "@ngrx/store-devtools": "^13.2.0",
     "json-server": "^0.17.0",
     "leaflet": "^1.8.0",
     "moment": "^2.29.3",

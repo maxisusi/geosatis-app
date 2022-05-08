@@ -17,6 +17,8 @@ import { OffendersService } from './services/offenders.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { offenderReducer } from './store/state/offenders/offenders.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { offenderReducer } from './store/state/offenders/offenders.reducer';
     LeafletModule,
     ReactiveFormsModule,
     StoreModule.forRoot({ offenders: offenderReducer }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [OffendersService],
   bootstrap: [AppComponent],
