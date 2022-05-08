@@ -2,15 +2,25 @@ import { Action, Store } from '@ngrx/store';
 import { OffendersService } from 'src/app/services/offenders.service';
 import { AppState } from '../../app.state';
 
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { act, Actions, createEffect, ofType } from '@ngrx/effects';
 import {
+  addOffender,
   loadOffenders,
   loadOffendersFailure,
   loadOffendersSuccess,
 } from './offenders.actions';
-import { catchError, from, map, mergeMap, of, switchMap } from 'rxjs';
+import {
+  catchError,
+  from,
+  map,
+  mergeMap,
+  of,
+  switchMap,
+  withLatestFrom,
+} from 'rxjs';
 import { Offender } from 'src/app/shared/application.models';
 import { Injectable } from '@angular/core';
+import { selectAllOffenders } from './offenders.selectors';
 
 @Injectable()
 export class OffendersEffect {
@@ -37,5 +47,19 @@ export class OffendersEffect {
         )
       ),
     { dispatch: true }
+  );
+
+  // * Run this function everytime a AddOffender action is dispatched
+
+  addOffender$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(addOffender),
+        withLatestFrom(this.store.select(selectAllOffenders)),
+        switchMap(([action]) =>
+          from(this.offendersService.createOffender(action.payload))
+        )
+      ),
+    { dispatch: false }
   );
 }

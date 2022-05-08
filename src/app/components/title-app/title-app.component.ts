@@ -10,7 +10,9 @@ import { CreateOffendersModalComponent } from '../create-offenders-modal/create-
 export class TitleAppComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.openDialog();
+  }
 
   openDialog() {
     const dialogRef = this.dialog.open(CreateOffendersModalComponent);

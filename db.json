@@ -22,7 +22,6 @@
       },
       "imgURL": "https://source.unsplash.com/800x800/?face"
     },
-
     {
       "id": 2,
       "firstName": "Remi",
@@ -32,7 +31,18 @@
         "lat": "46.52962187013265",
         "long": "6.338212094381884"
       },
-
+      "imgURL": "https://source.unsplash.com/800x800/?face"
+    },
+    {
+      "id": "995206cc-247e-48b6-901b-299537c0b1c4",
+      "firstName": "Max",
+      "lastName": "Balej",
+      "birthdate": "2022-05-17T22:00:00.000Z",
+      "profileImage": "",
+      "location": {
+        "lat": "46.132335832224506 ",
+        "long": "7.075798217929714"
+      },
       "imgURL": "https://source.unsplash.com/800x800/?face"
     }
   ]
