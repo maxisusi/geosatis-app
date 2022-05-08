@@ -14,15 +14,26 @@ export class CreateOffendersModalComponent implements OnInit {
   ) {}
 
   locations = [
-    { id: 1, value: 'Location 1' },
-    { id: 2, value: 'Location 2' },
+    {
+      id: 1,
+      value: 'Location 1',
+      location: { lat: '4.22222', long: '2.3333' },
+    },
+    {
+      id: 2,
+      value: 'Location 2',
+      location: { lat: '8.22222', long: '1.3333' },
+    },
     { id: 3, value: 'Location 3' },
+    { lat: '2.22222', long: '9.3333' },
   ];
   ngOnInit(): void {
     // Reset form
     this.offenders.initalizeFormGroup();
   }
   onSubmit(): void {
-    this.dialog.closeAll();
+    // this.dialog.closeAll();
+
+    this.offenders.createOffender();
   }
 }

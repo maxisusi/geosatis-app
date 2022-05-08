@@ -34,4 +34,12 @@ export class OffendersService {
   getOffenders(): Observable<Offender[]> {
     return this.http.get<Offender[]>(this.apiUrl);
   }
+
+  createOffender(): void {
+    const newOffender = { id: 123, ...this.form.getRawValue() };
+
+    console.log(newOffender);
+    // console.log(this.form.getRawValue());
+    // return this.http.post<Offender>(this.apiUrl, )
+  }
 }
