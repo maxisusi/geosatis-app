@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validator, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Offender } from '../shared/application.models';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable({
   providedIn: 'root',
@@ -35,11 +36,19 @@ export class OffendersService {
     return this.http.get<Offender[]>(this.apiUrl);
   }
 
-  createOffender(): void {
-    const newOffender = { id: 123, ...this.form.getRawValue() };
+  getFormData(): Offender {
+    // * Removing the key attribute
+    const rawFormValue = this.form.getRawValue();
+    delete rawFormValue['$key'];
 
-    console.log(newOffender);
-    // console.log(this.form.getRawValue());
-    // return this.http.post<Offender>(this.apiUrl, )
+    // * Generating an unique ID
+    const newOffender: Offender = { id: uuidv4(), ...rawFormValue };
+
+    return newOffender;
+  }
+
+  createOffender(offender: Offender): Observable<Offender> {
+    console.log(offender);
+    return this.http.get<Offender>(this.apiUrl);
   }
 }

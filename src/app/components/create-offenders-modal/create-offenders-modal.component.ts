@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { OffendersService } from 'src/app/services/offenders.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.state';
+import { addOffender } from 'src/app/store/state/offenders/offenders.actions';
 
 @Component({
   selector: 'app-create-offenders-modal',
@@ -10,7 +13,8 @@ import { MatDialog } from '@angular/material/dialog';
 export class CreateOffendersModalComponent implements OnInit {
   constructor(
     public readonly offenders: OffendersService,
-    private readonly dialog: MatDialog
+    private readonly dialog: MatDialog,
+    private readonly store: Store<AppState>
   ) {}
 
   locations = [
@@ -34,6 +38,6 @@ export class CreateOffendersModalComponent implements OnInit {
   onSubmit(): void {
     // this.dialog.closeAll();
 
-    this.offenders.createOffender();
+    this.store.dispatch(addOffender({ payload: this.offenders.getFormData() }));
   }
 }
