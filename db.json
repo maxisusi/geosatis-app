@@ -44,6 +44,18 @@
         "long": "7.075798217929714"
       },
       "imgURL": "https://source.unsplash.com/800x800/?face"
+    },
+    {
+      "id": "80d918db-c048-4e1b-a168-63ae45039c23",
+      "firstName": "Test",
+      "lastName": "Test",
+      "birthdate": "",
+      "profileImage": "",
+      "location": {
+        "lat": "46.132335832224506 ",
+        "long": "7.075798217929714"
+      },
+      "imgURL": "https://source.unsplash.com/800x800/?face"
     }
   ]
 }
