@@ -10,6 +10,28 @@
         "long": "0.4111"
       },
       "imgURL": "https://source.unsplash.com/800x800/?face"
+    },
+    {
+      "id": 2,
+      "firstName": "Josh",
+      "lastName": "Leder",
+      "birthdate": "05/03/1999",
+      "location": {
+        "lat": "-0.331",
+        "long": "0.4111"
+      },
+      "imgURL": "https://source.unsplash.com/800x800/?face"
+    },
+    {
+      "id": 2,
+      "firstName": "Remi",
+      "lastName": "Dupuis",
+      "birthdate": "05/03/1999",
+      "location": {
+        "lat": "-0.331",
+        "long": "0.4111"
+      },
+      "imgURL": "https://source.unsplash.com/800x800/?face"
     }
   ]
 }

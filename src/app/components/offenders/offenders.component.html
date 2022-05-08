@@ -1,7 +1,3 @@
 <div class="offenders">
-    <app-offenders-list></app-offenders-list>
-    <app-offenders-list></app-offenders-list>
-    <app-offenders-list></app-offenders-list>
-    <app-offenders-list></app-offenders-list>
-    <app-offenders-list></app-offenders-list>
+    <app-offenders-list *ngFor="let offender of allOffenders$ | async"></app-offenders-list>
 </div>
