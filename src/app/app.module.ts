@@ -20,6 +20,8 @@ import { offenderReducer } from './store/state/offenders/offenders.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+import { OffendersEffect } from './store/state/offenders/offenders.effects';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -39,12 +41,13 @@ import { EffectsModule } from '@ngrx/effects';
     MaterialModule,
     LeafletModule,
     ReactiveFormsModule,
+    HttpClientModule,
     StoreModule.forRoot({ offenders: offenderReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
     }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([OffendersEffect]),
   ],
   providers: [OffendersService],
   bootstrap: [AppComponent],

@@ -1,11 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validator, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Offender } from '../shared/application.models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OffendersService {
-  constructor() {}
+  private apiUrl = 'http://localhost:4500/offenders';
+  constructor(private http: HttpClient) {}
 
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
@@ -25,5 +29,9 @@ export class OffendersService {
       location: '',
       profileImage: '',
     });
+  }
+
+  getOffenders(): Observable<Offender[]> {
+    return this.http.get<Offender[]>(this.apiUrl);
   }
 }
