@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validator, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -11,6 +11,12 @@ import { v4 as uuidv4 } from 'uuid';
 export class OffendersService {
   private apiUrl = 'http://localhost:4500/offenders';
   constructor(private http: HttpClient) {}
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
 
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
@@ -40,15 +46,25 @@ export class OffendersService {
     // * Removing the key attribute
     const rawFormValue = this.form.getRawValue();
     delete rawFormValue['$key'];
+    delete rawFormValue['location'];
+
+    const newLocation = {
+      lat: '46.132335832224506 ',
+      long: '7.075798217929714',
+    };
 
     // * Generating an unique ID
-    const newOffender: Offender = { id: uuidv4(), ...rawFormValue };
+    const newOffender: Offender = {
+      id: uuidv4(),
+      ...rawFormValue,
+      location: newLocation,
+    };
 
     return newOffender;
   }
 
   createOffender(offender: Offender): Observable<Offender> {
     console.log(offender);
-    return this.http.get<Offender>(this.apiUrl);
+    return this.http.post<Offender>(this.apiUrl, offender, this.httpOptions);
   }
 }

@@ -22,7 +22,6 @@
       },
       "imgURL": "https://source.unsplash.com/800x800/?face"
     },
-
     {
       "id": 2,
       "firstName": "Remi",
@@ -32,8 +31,18 @@
         "lat": "46.52962187013265",
         "long": "6.338212094381884"
       },
-
       "imgURL": "https://source.unsplash.com/800x800/?face"
+    },
+    {
+      "id": "c0a50c5a-28df-4fac-a488-0ef95c6c145b",
+      "firstName": "John",
+      "lastName": "Lennon",
+      "birthdate": "2022-05-02T22:00:00.000Z",
+      "profileImage": "",
+      "location": {
+        "lat": "46.132335832224506 ",
+        "long": "7.075798217929714"
+      }
     }
   ]
 }
