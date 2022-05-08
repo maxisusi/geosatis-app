@@ -1,15 +1,15 @@
 <div class="offender-card">
     <div class="offender-info-wrapper">
-        <img class="offender-face" src="https://avatars.dicebear.com/api/pixel-art-neutral/asass.svg" />
+        <img class="offender-face" src={{offender.imgURL}} />
         <div class="offender-info-text-wrapper">
             <div class="offender-info-text-block">
 
-                <h3 class="offender-info-main">Last Name: <strong>Balej </strong></h3>
-                <h3 class="offender-info-main">First Name: <strong>Max </strong></h3>
+                <h3 class="offender-info-main">Last Name: <strong>{{offender.lastName}} </strong></h3>
+                <h3 class="offender-info-main">First Name: <strong>{{offender.firstName}} </strong></h3>
             </div>
             <div class="offender-info-text-block">
-                <h5 class="offender-info-secondary">Latitude: -40.678</h5>
-                <h5 class="offender-info-secondary">Longitude: 4.6446</h5>
+                <h5 class="offender-info-secondary">Latitude: {{offender.location.lat}}</h5>
+                <h5 class="offender-info-secondary">Longitude: {{offender.location.long}}</h5>
             </div>
         </div>
     </div>

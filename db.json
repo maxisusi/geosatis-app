@@ -3,11 +3,11 @@
     {
       "id": 1,
       "firstName": "Max",
-      "lastName": "Bale",
+      "lastName": "Balej",
       "birthdate": "05/03/1999",
       "location": {
-        "lat": "-0.331",
-        "long": "0.4111"
+        "lat": "-0.781",
+        "long": "0.4381"
       },
       "imgURL": "https://source.unsplash.com/800x800/?face"
     },
@@ -17,8 +17,8 @@
       "lastName": "Leder",
       "birthdate": "05/03/1999",
       "location": {
-        "lat": "-0.331",
-        "long": "0.4111"
+        "lat": "-0.2531",
+        "long": "0.41111"
       },
       "imgURL": "https://source.unsplash.com/800x800/?face"
     },
@@ -28,8 +28,8 @@
       "lastName": "Dupuis",
       "birthdate": "05/03/1999",
       "location": {
-        "lat": "-0.331",
-        "long": "0.4111"
+        "lat": "-0.381",
+        "long": "0.4081"
       },
       "imgURL": "https://source.unsplash.com/800x800/?face"
     }
