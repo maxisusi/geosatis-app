@@ -58,11 +58,18 @@ export class OffendersMapComponent implements OnInit {
     this.allOffenders$.subscribe((offenders: Offender[]) => {
       console.log(offenders);
 
-      const markers = offenders.map((offender) => {
-        const singleMarker = marker([
-          offender.location.lat,
-          offender.location.long,
-        ]);
+      offenders.map((offender) => {
+        const singleMarker = marker(
+          [offender.location.lat, offender.location.long],
+          {
+            icon: icon({
+              ...Icon.Default.prototype.options,
+              iconUrl: 'assets/marker-icon.png',
+              iconRetinaUrl: 'assets/marker-icon-2x.png',
+              shadowUrl: 'assets/marker-shadow.png',
+            }),
+          }
+        );
         this.markerList.push(singleMarker);
       });
     });
