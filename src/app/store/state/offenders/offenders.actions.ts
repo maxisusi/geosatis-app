@@ -20,7 +20,7 @@ export const updateOffender = createAction(
 
 export const loadOffenders = createAction(
   '[Offender Page] Load Offenders',
-  props<{ index: number }>()
+  props<{ index: number; showAll?: boolean }>()
 );
 
 // * Handle offender load success

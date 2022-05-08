@@ -52,10 +52,13 @@ export class OffendersMapComponent implements OnInit {
 
   layers = [];
 
+  checked = false;
+
   ngOnInit(): void {
     console.log('Init');
-    // Subscribe to get datas from offender store
+    // * Subscribe to get datas from offender store
     this.allOffenders$.subscribe((offenders: Offender[]) => {
+      // * Reset markers list
       this.markerList = [];
       offenders.map((offender) => {
         const singleMarker = marker(
@@ -75,4 +78,6 @@ export class OffendersMapComponent implements OnInit {
       this.layers = this.markerList;
     });
   }
+
+  ngDoCheck(): void {}
 }

@@ -35,7 +35,7 @@ export const offenderReducer = createReducer(
     ...state,
     offenders: state.offenders.filter((offender) => offender.id !== id),
   })),
-  on(loadOffenders, (state, { index }) => ({
+  on(loadOffenders, (state, { index, showAll }) => ({
     ...state,
     status: 'loading',
   })),
