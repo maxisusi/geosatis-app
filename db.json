@@ -6,8 +6,8 @@
       "lastName": "Balej",
       "birthdate": "05/03/1999",
       "location": {
-        "lat": "-0.781",
-        "long": "0.4381"
+        "lat": "47.22713507653385",
+        "long": "6.957181005508436"
       },
       "imgURL": "https://source.unsplash.com/800x800/?face"
     },
@@ -17,20 +17,22 @@
       "lastName": "Leder",
       "birthdate": "05/03/1999",
       "location": {
-        "lat": "-0.2531",
-        "long": "0.41111"
+        "lat": "46.51809218867087",
+        "long": "6.5620082840856651"
       },
       "imgURL": "https://source.unsplash.com/800x800/?face"
     },
+
     {
       "id": 2,
       "firstName": "Remi",
       "lastName": "Dupuis",
       "birthdate": "05/03/1999",
       "location": {
-        "lat": "-0.381",
-        "long": "0.4081"
+        "lat": "46.52962187013265",
+        "long": "6.338212094381884"
       },
+
       "imgURL": "https://source.unsplash.com/800x800/?face"
     }
   ]

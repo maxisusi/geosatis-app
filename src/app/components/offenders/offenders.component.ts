@@ -16,6 +16,5 @@ export class OffendersComponent implements OnInit {
   ngOnInit(): void {
     // * Dispatch loading offender list
     this.store.dispatch(loadOffenders());
-    console.log('test');
   }
 }

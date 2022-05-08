@@ -1,6 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { circle, latLng, marker, polygon, tileLayer } from 'leaflet';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.state';
+import { selectAllOffenders } from 'src/app/store/state/offenders/offenders.selectors';
+import {
+  circle,
+  Icon,
+  icon,
+  latLng,
+  marker,
+  polygon,
+  tileLayer,
+} from 'leaflet';
+import { Offender } from 'src/app/shared/application.models';
+import { loadOffenders } from 'src/app/store/state/offenders/offenders.actions';
 
 @Component({
   selector: 'app-offenders-map',
@@ -8,6 +21,9 @@ import { circle, latLng, marker, polygon, tileLayer } from 'leaflet';
   styleUrls: ['./offenders-map.component.css'],
 })
 export class OffendersMapComponent implements OnInit {
+  public allOffenders$ = this.store.select(selectAllOffenders);
+
+  markerList: any = [];
   options = {
     layers: [
       tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -15,8 +31,8 @@ export class OffendersMapComponent implements OnInit {
         attribution: '...',
       }),
     ],
-    zoom: 5,
-    center: latLng(46.879966, -121.726909),
+    zoom: 7.5,
+    center: latLng(46.8182, 8.2275),
   };
 
   layersControl = {
@@ -30,27 +46,25 @@ export class OffendersMapComponent implements OnInit {
         { maxZoom: 18, attribution: '...' }
       ),
     },
-    overlays: {
-      'Big Circle': circle([46.95, -122], { radius: 5000 }),
-      'Big Square': polygon([
-        [46.8, -121.55],
-        [46.9, -121.55],
-        [46.9, -121.7],
-        [46.8, -121.7],
-      ]),
-    },
+    overlays: {},
   };
 
-  layers = [
-    circle([46.95, -122], { radius: 5000 }),
-    polygon([
-      [46.8, -121.85],
-      [46.92, -121.92],
-      [46.87, -121.8],
-    ]),
-    marker([46.879966, -121.726909]),
-  ];
-  constructor() {}
+  layers = this.markerList;
 
-  ngOnInit(): void {}
+  constructor(private readonly store: Store<AppState>) {}
+
+  ngOnInit(): void {
+    // Subscribe to get datas from offender store
+    this.allOffenders$.subscribe((offenders: Offender[]) => {
+      console.log(offenders);
+
+      const markers = offenders.map((offender) => {
+        const singleMarker = marker([
+          offender.location.lat,
+          offender.location.long,
+        ]);
+        this.markerList.push(singleMarker);
+      });
+    });
+  }
 }
