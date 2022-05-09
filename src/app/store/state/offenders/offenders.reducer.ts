@@ -11,7 +11,7 @@ import {
 } from './offenders.actions';
 
 export interface OffenderState {
-  offenders: Offender[];
+  offenders: Offender[] | any;
   error: string | null;
   status: 'pending' | 'loading' | 'error' | 'success';
 }
@@ -34,7 +34,9 @@ export const offenderReducer = createReducer(
   // * Remove an offender
   on(removeOffender, (state, { id }) => ({
     ...state,
-    offenders: state.offenders.filter((offender) => offender.id !== id),
+    offenders: state.offenders.filter(
+      (offender: Offender) => offender.id !== id
+    ),
   })),
   on(loadOffenders, (state, { index, showAll }) => ({
     ...state,
@@ -43,7 +45,7 @@ export const offenderReducer = createReducer(
 
   on(updateOffender, (state, { payload }) => ({
     ...state,
-    offenders: [...state.offenders, payload],
+    offenders: state.offenders.map((offender: Offender) => {}),
   })),
 
   // * Handle offender load success

@@ -27,15 +27,15 @@ export class CreateOffendersModalComponent implements OnInit {
     {
       id: 1,
       value: 'Location 1',
-      location: { lat: '4.22222', long: '2.3333' },
+      location: { lat: 4.22222, long: 2.3333 },
     },
     {
       id: 2,
       value: 'Location 2',
-      location: { lat: '8.22222', long: '1.3333' },
+      location: { lat: 8.22222, long: 1.3333 },
     },
     { id: 3, value: 'Location 3' },
-    { lat: '2.22222', long: '9.3333' },
+    { lat: 2.22222, long: 9.3333 },
   ];
   ngOnInit(): void {
     // Reset form
@@ -66,11 +66,23 @@ export class CreateOffendersModalComponent implements OnInit {
         };
         this.store.dispatch(updateOffender({ payload: finalOffender }));
       } else {
-        console.log('CREATE OFFENDER');
         // * Dispatch action to create an offender
-        this.store.dispatch(
-          addOffender({ payload: this.offenders.getFormData() })
-        );
+
+        const { birthdate, firstName, imgURL, lastName, location, $key } =
+          this.offenders.getFormData();
+        const finalOffender = {
+          id: $key,
+          firstName,
+          lastName,
+          birthdate,
+          imgURL: 'https://source.unsplash.com/800x800/?face',
+          location: {
+            lat: 46.132335832224506,
+            long: 7.075798217929714,
+          },
+        };
+
+        this.store.dispatch(addOffender({ payload: finalOffender }));
       }
 
       // * Reset form

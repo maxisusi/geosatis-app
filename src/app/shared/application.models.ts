@@ -1,6 +1,6 @@
 // Offenders Object definition
 export interface Offender {
-  id?: string;
+  id: string;
   firstName: string;
   lastName: string;
   birthdate: string;

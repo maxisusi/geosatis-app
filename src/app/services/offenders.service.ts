@@ -54,10 +54,7 @@ export class OffendersService {
     return this.form.valid;
   }
 
-  getOffenders(index: number, showAll?: boolean): Observable<Offender[]> {
-    if (showAll) {
-      return this.http.get<Offender[]>(`${this.apiUrl}`);
-    }
+  getOffenders(index: number): Observable<Offender[]> {
     return this.http.get<Offender[]>(`${this.apiUrl}?_page=${index}&_limit=5`);
   }
 

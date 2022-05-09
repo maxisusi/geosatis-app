@@ -1,4 +1,5 @@
 import { createSelector } from '@ngrx/store';
+import { Offender } from 'src/app/shared/application.models';
 import { AppState } from '../../app.state';
 import { OffenderState } from './offenders.reducer';
 
@@ -13,7 +14,7 @@ export const selectAllOffenders = createSelector(
 // * Select offender by ID
 export const getOffenderById = (id: string) =>
   createSelector(selectOffenders, (state: OffenderState) => {
-    return state.offenders.find((offender) => offender.id === id);
+    return state.offenders.find((offender: Offender) => offender.id === id);
   });
 
 // export const getFirstOffender = (

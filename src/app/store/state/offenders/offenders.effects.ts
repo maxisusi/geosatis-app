@@ -36,9 +36,9 @@ export class OffendersEffect {
     () =>
       this.actions$.pipe(
         ofType(loadOffenders),
-        switchMap(({ index, showAll }) =>
+        switchMap(({ index }) =>
           from(
-            this.offendersService.getOffenders(index, showAll).pipe(
+            this.offendersService.getOffenders(index).pipe(
               map((offenders) =>
                 loadOffendersSuccess({ offendersData: offenders })
               ),
