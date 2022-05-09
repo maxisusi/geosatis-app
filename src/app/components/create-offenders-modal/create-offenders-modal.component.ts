@@ -3,7 +3,10 @@ import { OffendersService } from 'src/app/services/offenders.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
-import { addOffender } from 'src/app/store/state/offenders/offenders.actions';
+import {
+  addOffender,
+  updateOffender,
+} from 'src/app/store/state/offenders/offenders.actions';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Offender } from 'src/app/shared/application.models';
 
@@ -17,7 +20,7 @@ export class CreateOffendersModalComponent implements OnInit {
     public readonly offenders: OffendersService,
     private readonly dialog: MatDialog,
     private readonly store: Store<AppState>,
-    @Inject(MAT_DIALOG_DATA) public data: Offender
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   locations = [
@@ -48,9 +51,28 @@ export class CreateOffendersModalComponent implements OnInit {
   onSubmit(): void {
     // * If the form is valid, dispatch data, reset form and close modal
     if (this.offenders.validateForm()) {
-      this.store.dispatch(
-        addOffender({ payload: this.offenders.getFormData() })
-      );
+      // * If true, dispatch action to update offender
+      if (this.data) {
+        const { birthdate, firstName, imgURL, lastName, location, $key } =
+          this.offenders.getFormData();
+
+        const finalOffender = {
+          id: $key,
+          firstName,
+          lastName,
+          birthdate,
+          imgURL,
+          location,
+        };
+
+        this.store.dispatch(updateOffender({ payload: finalOffender }));
+      } else {
+        console.log('CREATE OFFENDER');
+        // * Dispatch action to create an offender
+        this.store.dispatch(
+          addOffender({ payload: this.offenders.getFormData() })
+        );
+      }
 
       // * Reset form
       this.offenders.initalizeFormGroup();

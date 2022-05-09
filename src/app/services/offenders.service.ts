@@ -38,6 +38,7 @@ export class OffendersService {
     });
   }
 
+  // * Populate data of offenders when we want to update an offender
   populateFormGroup(offenders: Offender): void {
     this.form.setValue({
       $key: offenders.id,
@@ -60,31 +61,37 @@ export class OffendersService {
     return this.http.get<Offender[]>(`${this.apiUrl}?_page=${index}&_limit=5`);
   }
 
-  getFormData(): Offender {
-    // * Removing the key attribute
-    const rawFormValue = this.form.getRawValue();
-    delete rawFormValue['$key'];
-    delete rawFormValue['location'];
-    delete rawFormValue['imageURL'];
+  //todo: Update this function to prevent regenerate id
+  getFormData(): any {
+    return this.form.getRawValue();
+  }
+
+  createOffender(offender: Offender): Observable<Offender> {
+    const rawValues: any = offender;
+    delete rawValues['$key'];
+
+    // TEMPORARY
+    delete rawValues['location'];
+    delete rawValues['imgURL'];
 
     const newLocation = {
-      lat: '46.132335832224506 ',
+      lat: '46.132335832224506',
       long: '7.075798217929714',
     };
 
-    // * Generating an unique ID
-    const newOffender: Offender = {
+    // * Object Redefinition
+    const formValues: Offender = {
       id: uuidv4(),
-      ...rawFormValue,
+      ...rawValues,
       location: newLocation,
       imgURL: 'https://source.unsplash.com/800x800/?face',
     };
 
-    return newOffender;
+    return this.http.post<Offender>(this.apiUrl, formValues, this.httpOptions);
   }
 
-  createOffender(offender: Offender): Observable<Offender> {
-    console.log(offender);
-    return this.http.post<Offender>(this.apiUrl, offender, this.httpOptions);
+  updateOffender(offender: Offender): Observable<Offender> {
+    console.log(offender.id);
+    return this.http.put<Offender>(`${this.apiUrl}/${offender.id}`, offender);
   }
 }

@@ -8,6 +8,7 @@ import {
   loadOffenders,
   loadOffendersFailure,
   loadOffendersSuccess,
+  updateOffender,
 } from './offenders.actions';
 import {
   catchError,
@@ -58,6 +59,20 @@ export class OffendersEffect {
         withLatestFrom(this.store.select(selectAllOffenders)),
         switchMap(([action]) =>
           from(this.offendersService.createOffender(action.payload))
+        )
+      ),
+    { dispatch: false }
+  );
+
+  // * Run this function everytime a UpdateOffender action is dispatched
+
+  updateOffender$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(updateOffender),
+        withLatestFrom(this.store.select(selectAllOffenders)),
+        switchMap(([action]) =>
+          from(this.offendersService.updateOffender(action.payload))
         )
       ),
     { dispatch: false }

@@ -23,6 +23,7 @@ export class OffendersListComponent implements OnInit {
 
   openEditModal(id: any): void {
     let editOffenderData: Offender | undefined;
+    console.log(id);
 
     // * Get Data with selector
     const data$ = this.store.select(getOffenderById(id));

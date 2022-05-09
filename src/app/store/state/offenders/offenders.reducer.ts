@@ -7,6 +7,7 @@ import {
   loadOffendersFailure,
   loadOffendersSuccess,
   removeOffender,
+  updateOffender,
 } from './offenders.actions';
 
 export interface OffenderState {
@@ -38,6 +39,11 @@ export const offenderReducer = createReducer(
   on(loadOffenders, (state, { index, showAll }) => ({
     ...state,
     status: 'loading',
+  })),
+
+  on(updateOffender, (state, { payload }) => ({
+    ...state,
+    offenders: [...state.offenders, payload],
   })),
 
   // * Handle offender load success
