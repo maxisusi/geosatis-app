@@ -64,23 +64,6 @@ export class OffendersService {
   }
 
   createOffender(offender: Offender): Observable<Offender> {
-    // const { birthdate, firstName, imgURL, lastName }: Offender = offender;
-
-    console.log(offender);
-
-    // * Object Redefinition
-    // const formValues: Offender = {
-    //   id: uuidv4(),
-    //   firstName,
-    //   lastName,
-    //   birthdate,
-    //   location: {
-    //     lat: 46.132335832224506,
-    //     long: 7.075798217929714,
-    //   },
-    //   imgURL: 'https://source.unsplash.com/800x800/?face',
-    // };
-
     return this.http.post<Offender>(this.apiUrl, offender, this.httpOptions);
   }
 
