@@ -16,7 +16,8 @@
         <mat-menu #menu="matMenu">
 
             <ng-container *ngFor="let timezones of timezoneList">
-                <button mat-menu-item (click)="selectTimeZone(timezones.code)">
+                <button [disabled]="timezones.code === selectedTimeZone" mat-menu-item
+                    (click)="selectTimeZone(timezones.code)">
                     <span>{{timezones.name}}</span>
                 </button>
             </ng-container>
