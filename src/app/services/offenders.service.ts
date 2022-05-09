@@ -24,7 +24,7 @@ export class OffendersService {
     lastName: new FormControl('', Validators.required),
     birthdate: new FormControl(''),
     location: new FormControl('', Validators.required),
-    profileImage: new FormControl(''),
+    imgURL: new FormControl(''),
   });
 
   initalizeFormGroup(): void {
@@ -34,7 +34,7 @@ export class OffendersService {
       lastName: '',
       birthdate: '',
       location: '',
-      profileImage: '',
+      imgURL: '',
     });
   }
 
@@ -46,7 +46,7 @@ export class OffendersService {
       lastName: offenders.lastName,
       birthdate: offenders.birthdate,
       location: offenders.location,
-      profileImage: offenders.imgURL,
+      imgURL: offenders.imgURL,
     });
   }
 

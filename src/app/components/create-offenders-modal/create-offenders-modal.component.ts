@@ -64,7 +64,9 @@ export class CreateOffendersModalComponent implements OnInit {
           imgURL,
           location,
         };
-        this.store.dispatch(updateOffender({ payload: finalOffender }));
+
+        console.log(finalOffender);
+        // this.store.dispatch(updateOffender({ payload: finalOffender }));
       } else {
         // * Dispatch action to create an offender
 
