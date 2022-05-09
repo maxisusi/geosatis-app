@@ -8,9 +8,19 @@
         <button mat-icon-button color="white" aria-label="Example icon button with a menu icon">
             <mat-icon>notifications icon</mat-icon>
         </button>
-        <button mat-icon-button color="white" aria-label="Example icon button with a menu icon">
+        <button mat-icon-button color="white" [matMenuTriggerFor]="menu"
+            aria-label="Example icon button with a menu icon">
             <mat-icon>person icon</mat-icon>
         </button>
+
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <span>America/Los Angeles</span>
+            </button>
+            <button mat-menu-item>
+                <span>Europe/Madrid</span>
+            </button>
+        </mat-menu>
 
     </div>
 </header>
