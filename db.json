@@ -1,13 +1,13 @@
 {
   "offenders": [
     {
-      "id": "5ced5b9d-dbc8-4f80-ad0d-844f8e3d2b04",
-      "firstName": "Maxaaa",
+      "id": "434a3253-2f0c-46e3-98a8-4d3aaacf5c97",
+      "firstName": "Max",
       "lastName": "Balej",
-      "birthdate": "2022-05-10T22:00:00.000Z",
+      "birthdate": "",
       "location": {
-        "lat": "46.132335832224506",
-        "long": "7.075798217929714"
+        "lat": 46.132335832224506,
+        "long": 7.075798217929714
       }
     }
   ]
