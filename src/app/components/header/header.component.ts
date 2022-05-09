@@ -24,8 +24,6 @@ export class HeaderComponent implements OnInit {
 
   selectTimeZone(timezone: any): void {
     this.selectedTimeZone = timezone;
-
-    console.log(timezone);
   }
 
   ngOnInit(): void {

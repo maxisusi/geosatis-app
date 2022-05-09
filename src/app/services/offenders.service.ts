@@ -24,7 +24,7 @@ export class OffendersService {
     lastName: new FormControl('', Validators.required),
     birthdate: new FormControl(''),
     location: new FormControl('', Validators.required),
-    profileImage: new FormControl(''),
+    imgURL: new FormControl(''),
   });
 
   initalizeFormGroup(): void {
@@ -34,48 +34,58 @@ export class OffendersService {
       lastName: '',
       birthdate: '',
       location: '',
-      profileImage: '',
+      imgURL: '',
+    });
+  }
+
+  // * Populate data of offenders when we want to update an offender
+  populateFormGroup(offenders: Offender): void {
+    this.form.setValue({
+      $key: offenders.id,
+      firstName: offenders.firstName,
+      lastName: offenders.lastName,
+      birthdate: offenders.birthdate,
+      location: offenders.location,
+      imgURL: offenders.imgURL,
     });
   }
 
   validateForm(): boolean {
     return this.form.valid;
-
-    this.form.reset;
   }
 
-  getOffenders(index: number, showAll?: boolean): Observable<Offender[]> {
-    if (showAll) {
-      return this.http.get<Offender[]>(`${this.apiUrl}`);
-    }
+  getOffenders(index: number): Observable<Offender[]> {
     return this.http.get<Offender[]>(`${this.apiUrl}?_page=${index}&_limit=5`);
   }
 
-  getFormData(): Offender {
-    // * Removing the key attribute
-    const rawFormValue = this.form.getRawValue();
-    delete rawFormValue['$key'];
-    delete rawFormValue['location'];
-    delete rawFormValue['imageURL'];
-
-    const newLocation = {
-      lat: '46.132335832224506 ',
-      long: '7.075798217929714',
-    };
-
-    // * Generating an unique ID
-    const newOffender: Offender = {
-      id: uuidv4(),
-      ...rawFormValue,
-      location: newLocation,
-      imgURL: 'https://source.unsplash.com/800x800/?face',
-    };
-
-    return newOffender;
+  //todo: Update this function to prevent regenerate id
+  getFormData(): any {
+    return this.form.getRawValue();
   }
 
   createOffender(offender: Offender): Observable<Offender> {
+    // const { birthdate, firstName, imgURL, lastName }: Offender = offender;
+
     console.log(offender);
+
+    // * Object Redefinition
+    // const formValues: Offender = {
+    //   id: uuidv4(),
+    //   firstName,
+    //   lastName,
+    //   birthdate,
+    //   location: {
+    //     lat: 46.132335832224506,
+    //     long: 7.075798217929714,
+    //   },
+    //   imgURL: 'https://source.unsplash.com/800x800/?face',
+    // };
+
     return this.http.post<Offender>(this.apiUrl, offender, this.httpOptions);
+  }
+
+  updateOffender(offender: Offender): Observable<Offender> {
+    console.log(offender.id);
+    return this.http.put<Offender>(`${this.apiUrl}/${offender.id}`, offender);
   }
 }

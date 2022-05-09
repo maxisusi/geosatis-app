@@ -7,10 +7,11 @@ import {
   loadOffendersFailure,
   loadOffendersSuccess,
   removeOffender,
+  updateOffender,
 } from './offenders.actions';
 
 export interface OffenderState {
-  offenders: Offender[];
+  offenders: Offender[] | any;
   error: string | null;
   status: 'pending' | 'loading' | 'error' | 'success';
 }
@@ -33,11 +34,20 @@ export const offenderReducer = createReducer(
   // * Remove an offender
   on(removeOffender, (state, { id }) => ({
     ...state,
-    offenders: state.offenders.filter((offender) => offender.id !== id),
+    offenders: state.offenders.filter(
+      (offender: Offender) => offender.id !== id
+    ),
   })),
-  on(loadOffenders, (state, { index, showAll }) => ({
+  on(loadOffenders, (state) => ({
     ...state,
     status: 'loading',
+  })),
+
+  on(updateOffender, (state, { payload }) => ({
+    ...state,
+    offenders: state.offenders.map((elem: Offender) =>
+      elem.id === payload.id ? { ...payload } : elem
+    ),
   })),
 
   // * Handle offender load success
