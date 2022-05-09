@@ -38,10 +38,19 @@ export class OffendersService {
     });
   }
 
+  populateFormGroup(offenders: Offender): void {
+    this.form.setValue({
+      $key: offenders.id,
+      firstName: offenders.firstName,
+      lastName: offenders.lastName,
+      birthdate: offenders.birthdate,
+      location: offenders.location,
+      profileImage: offenders.imgURL,
+    });
+  }
+
   validateForm(): boolean {
     return this.form.valid;
-
-    this.form.reset;
   }
 
   getOffenders(index: number, showAll?: boolean): Observable<Offender[]> {

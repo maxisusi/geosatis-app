@@ -41,6 +41,8 @@ export class CreateOffendersModalComponent implements OnInit {
     // * If there are some datas, inject them insde the modal
     if (this.data) {
       console.log('There are som data');
+
+      this.offenders.populateFormGroup(this.data);
     }
   }
   onSubmit(): void {
