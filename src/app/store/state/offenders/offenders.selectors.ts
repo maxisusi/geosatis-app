@@ -3,10 +3,18 @@ import { AppState } from '../../app.state';
 import { OffenderState } from './offenders.reducer';
 
 export const selectOffenders = (state: AppState) => state.offenders;
+
+// * Select all offenders
 export const selectAllOffenders = createSelector(
   selectOffenders,
   (state: OffenderState) => state.offenders
 );
+
+// * Select offender by ID
+export const getOffenderById = (id: string) =>
+  createSelector(selectOffenders, (state: OffenderState) => {
+    return state.offenders.find((offender) => offender.id === id);
+  });
 
 // export const getFirstOffender = (
 //   current: number,

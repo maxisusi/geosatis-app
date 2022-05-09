@@ -13,7 +13,8 @@
             </div>
         </div>
     </div>
-    <button mat-icon-button color="white" aria-label="Example icon button with a menu icon">
+    <button (click)="openEditModal(offender.id)" mat-icon-button color="white"
+        aria-label="Example icon button with a menu icon">
         <mat-icon>edit icon</mat-icon>
     </button>
 </div>

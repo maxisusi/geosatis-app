@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { OffendersService } from 'src/app/services/offenders.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
 import { addOffender } from 'src/app/store/state/offenders/offenders.actions';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Offender } from 'src/app/shared/application.models';
 
 @Component({
   selector: 'app-create-offenders-modal',
@@ -14,7 +16,8 @@ export class CreateOffendersModalComponent implements OnInit {
   constructor(
     public readonly offenders: OffendersService,
     private readonly dialog: MatDialog,
-    private readonly store: Store<AppState>
+    private readonly store: Store<AppState>,
+    @Inject(MAT_DIALOG_DATA) public data: Offender
   ) {}
 
   locations = [
@@ -34,6 +37,11 @@ export class CreateOffendersModalComponent implements OnInit {
   ngOnInit(): void {
     // Reset form
     this.offenders.initalizeFormGroup();
+
+    // * If there are some datas, inject them insde the modal
+    if (this.data) {
+      console.log('There are som data');
+    }
   }
   onSubmit(): void {
     // * If the form is valid, dispatch data, reset form and close modal
