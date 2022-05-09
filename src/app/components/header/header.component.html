@@ -3,14 +3,26 @@
         <img src="/assets/Geosatis-logo.png" class="header-logo" />
     </div>
     <div class="header-menu">
-        <p class="header-menu-info">Last updated: <span class="bold">05/03/2022</span>
+        <p class="header-menu-info">Last updated: <span class="bold">{{date}}</span>
         </p>
         <button mat-icon-button color="white" aria-label="Example icon button with a menu icon">
             <mat-icon>notifications icon</mat-icon>
         </button>
-        <button mat-icon-button color="white" aria-label="Example icon button with a menu icon">
+        <button mat-icon-button color="white" [matMenuTriggerFor]="menu"
+            aria-label="Example icon button with a menu icon">
             <mat-icon>person icon</mat-icon>
         </button>
+
+        <mat-menu #menu="matMenu">
+
+            <ng-container *ngFor="let timezones of timezoneList">
+                <button [disabled]="timezones.code === selectedTimeZone" mat-menu-item
+                    (click)="selectTimeZone(timezones.code)">
+                    <span>{{timezones.name}}</span>
+                </button>
+            </ng-container>
+
+        </mat-menu>
 
     </div>
 </header>
