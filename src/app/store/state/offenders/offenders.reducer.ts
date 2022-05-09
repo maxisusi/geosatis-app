@@ -45,7 +45,9 @@ export const offenderReducer = createReducer(
 
   on(updateOffender, (state, { payload }) => ({
     ...state,
-    offenders: state.offenders.map((offender: Offender) => {}),
+    offenders: state.offenders.map((elem: Offender) =>
+      elem.id === payload.id ? { ...payload } : elem
+    ),
   })),
 
   // * Handle offender load success

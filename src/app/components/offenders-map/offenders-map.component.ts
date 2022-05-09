@@ -55,7 +55,6 @@ export class OffendersMapComponent implements OnInit {
   checked = false;
 
   ngOnInit(): void {
-    console.log('Init');
     // * Subscribe to get datas from offender store
     this.allOffenders$.subscribe((offenders: Offender[]) => {
       // * Reset markers list

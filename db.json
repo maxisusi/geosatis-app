@@ -2,14 +2,25 @@
   "offenders": [
     {
       "id": "65fb9de2-11ea-4fcd-a74f-014c9fb971b2",
-      "firstName": "MAx",
+      "firstName": "Max",
       "lastName": "Balej",
       "birthdate": "2022-05-17T22:00:00.000Z",
+      "imgURL": "https://source.unsplash.com/800x800/?face",
       "location": {
         "lat": 46.132335832224506,
         "long": 7.075798217929714
-      },
-      "imgURL": "https://source.unsplash.com/800x800/?face"
+      }
+    },
+    {
+      "id": "399546d4-5abf-41dc-a87e-43997ce94407",
+      "firstName": "Nadine",
+      "lastName": "Balej",
+      "birthdate": "2022-05-12T22:00:00.000Z",
+      "imgURL": "https://source.unsplash.com/800x700/?face",
+      "location": {
+        "lat": 46.132335832224506,
+        "long": 7.075798217929714
+      }
     }
   ]
 }

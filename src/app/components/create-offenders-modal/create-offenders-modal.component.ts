@@ -43,8 +43,6 @@ export class CreateOffendersModalComponent implements OnInit {
 
     // * If there are some datas, inject them insde the modal
     if (this.data) {
-      console.log('There are som data');
-
       this.offenders.populateFormGroup(this.data);
     }
   }
@@ -66,7 +64,7 @@ export class CreateOffendersModalComponent implements OnInit {
         };
 
         console.log(finalOffender);
-        // this.store.dispatch(updateOffender({ payload: finalOffender }));
+        this.store.dispatch(updateOffender({ payload: finalOffender }));
       } else {
         // * Dispatch action to create an offender
 
