@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Moment, MomentTimezone } from 'moment-timezone';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import * as moment from 'moment';
+import * as moment from 'moment-timezone';
 import { interval } from 'rxjs';
 
 @Component({
@@ -12,12 +12,14 @@ import { interval } from 'rxjs';
 export class HeaderComponent implements OnInit {
   constructor() {}
 
-  date = new Date().toString();
+  date: any = new Date();
   ticker$ = interval(1000);
 
   ngOnInit(): void {
+    let newDate: any = '';
     this.ticker$.subscribe(() => {
-      this.date = moment().format('MMMM Do YYYY, h:mm:ss a');
+      this.date = moment().tz('Australia/Sydney').format('h:mm:ss a');
+      console.log(newDate);
     });
   }
 }
