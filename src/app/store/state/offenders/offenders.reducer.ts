@@ -38,7 +38,7 @@ export const offenderReducer = createReducer(
       (offender: Offender) => offender.id !== id
     ),
   })),
-  on(loadOffenders, (state, { index, showAll }) => ({
+  on(loadOffenders, (state) => ({
     ...state,
     status: 'loading',
   })),

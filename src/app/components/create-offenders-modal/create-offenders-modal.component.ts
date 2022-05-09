@@ -3,6 +3,7 @@ import { OffendersService } from 'src/app/services/offenders.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
+import { v4 as uuidv4 } from 'uuid';
 import {
   addOffender,
   updateOffender,
@@ -70,8 +71,10 @@ export class CreateOffendersModalComponent implements OnInit {
 
         const { birthdate, firstName, imgURL, lastName, location, $key } =
           this.offenders.getFormData();
+
+        // * Object redefinition
         const finalOffender = {
-          id: $key,
+          id: uuidv4(),
           firstName,
           lastName,
           birthdate,
