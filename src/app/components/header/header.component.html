@@ -14,12 +14,13 @@
         </button>
 
         <mat-menu #menu="matMenu">
-            <button mat-menu-item>
-                <span>America/Los Angeles</span>
-            </button>
-            <button mat-menu-item>
-                <span>Europe/Madrid</span>
-            </button>
+
+            <ng-container *ngFor="let timezones of timezoneList">
+                <button mat-menu-item (click)="selectTimeZone(timezones.code)">
+                    <span>{{timezones.name}}</span>
+                </button>
+            </ng-container>
+
         </mat-menu>
 
     </div>

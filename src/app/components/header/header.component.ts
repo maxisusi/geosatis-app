@@ -14,12 +14,23 @@ export class HeaderComponent implements OnInit {
 
   date: any = new Date();
   ticker$ = interval(1000);
+  selectedTimeZone = 'Europe/Madrid';
+
+  // * Add timezone
+  timezoneList = [
+    { name: 'Europe / Madrid', code: 'Europe/Madrid' },
+    { name: 'America / New York', code: 'America/New_York' },
+  ];
+
+  selectTimeZone(timezone: any): void {
+    this.selectedTimeZone = timezone;
+
+    console.log(timezone);
+  }
 
   ngOnInit(): void {
-    let newDate: any = '';
     this.ticker$.subscribe(() => {
-      this.date = moment().tz('Australia/Sydney').format('h:mm:ss a');
-      console.log(newDate);
+      this.date = moment().tz(this.selectedTimeZone).format('h:mm:ss a');
     });
   }
 }
