@@ -21,6 +21,7 @@ import { loadOffenders } from 'src/app/store/state/offenders/offenders.actions';
   styleUrls: ['./offenders-map.component.css'],
 })
 export class OffendersMapComponent implements OnInit {
+  constructor(private readonly store: Store<AppState>) {}
   public allOffenders$ = this.store.select(selectAllOffenders);
 
   markerList: any = [];
@@ -49,13 +50,16 @@ export class OffendersMapComponent implements OnInit {
     overlays: {},
   };
 
-  layers = this.markerList;
+  layers = [];
 
-  constructor(private readonly store: Store<AppState>) {}
+  checked = false;
 
   ngOnInit(): void {
-    // Subscribe to get datas from offender store
+    console.log('Init');
+    // * Subscribe to get datas from offender store
     this.allOffenders$.subscribe((offenders: Offender[]) => {
+      // * Reset markers list
+      this.markerList = [];
       offenders.map((offender) => {
         const singleMarker = marker(
           [offender.location.lat, offender.location.long],
@@ -70,6 +74,10 @@ export class OffendersMapComponent implements OnInit {
         );
         this.markerList.push(singleMarker);
       });
+
+      this.layers = this.markerList;
     });
   }
+
+  ngDoCheck(): void {}
 }

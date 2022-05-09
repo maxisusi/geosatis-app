@@ -18,7 +18,10 @@ export const updateOffender = createAction(
   props<Offender>()
 );
 
-export const loadOffenders = createAction('[Offender Page] Load Offenders');
+export const loadOffenders = createAction(
+  '[Offender Page] Load Offenders',
+  props<{ index: number; showAll?: boolean }>()
+);
 
 // * Handle offender load success
 export const loadOffendersSuccess = createAction(
