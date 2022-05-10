@@ -12,12 +12,25 @@ export const selectPaginatedOffenders = createSelector(
   (state: OffenderState) => state.offenders.slice(0, 5)
 );
 
-export const selectByPagination = (index?: number) =>
+export const selectByPagination = (index: number) =>
   createSelector(
     selectOffenders,
 
     (state: OffenderState) => {
-      return state.offenders.slice(index, 5);
+      const limit = 5;
+      let min;
+      let max;
+
+      if (index === 0) {
+        min = 0;
+        max = limit;
+        return state.offenders.slice(min, max);
+      } else {
+        max = (index + 1) * 5;
+        min = max - limit;
+
+        return state.offenders.slice(min, max);
+      }
     }
   );
 
