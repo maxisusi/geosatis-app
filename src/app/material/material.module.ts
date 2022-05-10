@@ -11,6 +11,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import {
   MatFormFieldModule,
@@ -30,6 +31,7 @@ const MaterialComponents = [
   MatAutocompleteModule,
   MatSelectModule,
   MatMenuModule,
+  MatGridListModule,
 ];
 
 @NgModule({
