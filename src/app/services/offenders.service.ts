@@ -55,7 +55,7 @@ export class OffendersService {
   }
 
   getOffenders(index: number): Observable<Offender[]> {
-    return this.http.get<Offender[]>(`${this.apiUrl}?_page=${index}&_limit=5`);
+    return this.http.get<Offender[]>(this.apiUrl);
   }
 
   //todo: Update this function to prevent regenerate id

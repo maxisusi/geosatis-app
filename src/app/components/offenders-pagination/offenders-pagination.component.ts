@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
-import { loadOffenders } from 'src/app/store/state/offenders/offenders.actions';
+import { onPageChange } from 'src/app/store/state/index/index.actions';
 
 @Component({
   selector: 'app-offenders-pagination',
@@ -9,7 +9,7 @@ import { loadOffenders } from 'src/app/store/state/offenders/offenders.actions';
   styleUrls: ['./offenders-pagination.component.css'],
 })
 export class OffendersPaginationComponent implements OnInit {
-  public pageIndex: number = 1;
+  public pageIndex: number = 0;
 
   constructor(private store: Store<AppState>) {}
 
@@ -20,11 +20,11 @@ export class OffendersPaginationComponent implements OnInit {
 
   back(): void {
     this.pageIndex -= 1;
-    this.store.dispatch(loadOffenders({ index: this.pageIndex }));
+    this.store.dispatch(onPageChange({ index: this.pageIndex }));
   }
 
   front(): void {
     this.pageIndex += 1;
-    this.store.dispatch(loadOffenders({ index: this.pageIndex }));
+    this.store.dispatch(onPageChange({ index: this.pageIndex }));
   }
 }

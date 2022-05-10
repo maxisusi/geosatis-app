@@ -22,6 +22,7 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { OffendersEffect } from './store/state/offenders/offenders.effects';
 import { HttpClientModule } from '@angular/common/http';
+import { indexReducer } from './store/state/index/index.reducer';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { HttpClientModule } from '@angular/common/http';
     LeafletModule,
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forRoot({ offenders: offenderReducer }),
+    StoreModule.forRoot({ offenders: offenderReducer, index: indexReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

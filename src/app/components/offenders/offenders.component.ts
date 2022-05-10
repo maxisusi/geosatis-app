@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Offender } from 'src/app/shared/application.models';
 import { AppState } from 'src/app/store/app.state';
+import { selectTotalIndex } from 'src/app/store/state/index/index.selectors';
 import { loadOffenders } from 'src/app/store/state/offenders/offenders.actions';
-import { selectAllOffenders } from 'src/app/store/state/offenders/offenders.selectors';
+import {
+  selectByPagination,
+  selectPaginatedOffenders,
+} from 'src/app/store/state/offenders/offenders.selectors';
 
 @Component({
   selector: 'app-offenders',
@@ -10,11 +16,17 @@ import { selectAllOffenders } from 'src/app/store/state/offenders/offenders.sele
   styleUrls: ['./offenders.component.css'],
 })
 export class OffendersComponent implements OnInit {
-  public allOffenders$ = this.store.select(selectAllOffenders);
+  private indexPage$ = this.store.pipe(select(selectTotalIndex));
+  public allOffenders$!: Observable<Offender[]>;
+
   constructor(private readonly store: Store<AppState>) {}
 
   ngOnInit(): void {
     // * Dispatch loading offender list
     this.store.dispatch(loadOffenders({ index: 1 }));
+
+    this.indexPage$.subscribe((index) => {
+      this.allOffenders$ = this.store.pipe(select(selectByPagination(index)));
+    });
   }
 }

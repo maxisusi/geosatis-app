@@ -21,7 +21,7 @@ import {
 } from 'rxjs';
 import { Offender } from 'src/app/shared/application.models';
 import { Injectable } from '@angular/core';
-import { selectAllOffenders } from './offenders.selectors';
+import { selectPaginatedOffenders } from './offenders.selectors';
 
 @Injectable()
 export class OffendersEffect {
@@ -56,7 +56,7 @@ export class OffendersEffect {
     () =>
       this.actions$.pipe(
         ofType(addOffender),
-        withLatestFrom(this.store.select(selectAllOffenders)),
+        withLatestFrom(this.store.select(selectPaginatedOffenders)),
         switchMap(([action]) =>
           from(this.offendersService.createOffender(action.payload))
         )
@@ -70,7 +70,7 @@ export class OffendersEffect {
     () =>
       this.actions$.pipe(
         ofType(updateOffender),
-        withLatestFrom(this.store.select(selectAllOffenders)),
+        withLatestFrom(this.store.select(selectPaginatedOffenders)),
         switchMap(([action]) =>
           from(this.offendersService.updateOffender(action.payload))
         )
