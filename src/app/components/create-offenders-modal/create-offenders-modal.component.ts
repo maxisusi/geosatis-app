@@ -78,10 +78,20 @@ export class CreateOffendersModalComponent implements OnInit {
           firstName,
           lastName,
           birthdate,
-          imgURL: 'https://source.unsplash.com/800x800/?face',
+          imgURL: `https://source.unsplash.com/${(
+            Math.random() * (700 - 1000 + 1) +
+            700
+          ).toFixed()}x${(
+            Math.random() * (700 - 1000 + 1) +
+            700
+          ).toFixed()}/?face`,
           location: {
-            lat: 46.132335832224506,
-            long: 7.075798217929714,
+            lat: ` ${Math.random() * (40 - 50 + 1) + 43}.${
+              Math.random() * (0 - 2 + 1) + 0
+            }`,
+            long: `${Math.random() * (3 - 7 + 1) + 6}.${
+              Math.random() * (0 - 2 + 1) + 0
+            }`,
           },
         };
 

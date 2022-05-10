@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
 import { loadOffenders } from 'src/app/store/state/offenders/offenders.actions';
-import { selectAllOffenders } from 'src/app/store/state/offenders/offenders.selectors';
+import { selectPaginatedOffenders } from 'src/app/store/state/offenders/offenders.selectors';
 
 @Component({
   selector: 'app-offenders',
@@ -10,7 +10,7 @@ import { selectAllOffenders } from 'src/app/store/state/offenders/offenders.sele
   styleUrls: ['./offenders.component.css'],
 })
 export class OffendersComponent implements OnInit {
-  public allOffenders$ = this.store.select(selectAllOffenders);
+  public allOffenders$ = this.store.pipe(select(selectPaginatedOffenders));
   constructor(private readonly store: Store<AppState>) {}
 
   ngOnInit(): void {

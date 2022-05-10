@@ -5,10 +5,15 @@ import { OffenderState } from './offenders.reducer';
 
 export const selectOffenders = (state: AppState) => state.offenders;
 
-// * Select all offenders
-export const selectAllOffenders = createSelector(
+// * Select paginated offenders
+export const selectPaginatedOffenders = createSelector(
   selectOffenders,
   (state: OffenderState) => state.offenders.slice(0, 5)
+);
+
+export const selectAllOffenders = createSelector(
+  selectOffenders,
+  (state: OffenderState) => state.offenders
 );
 
 // * Select offender by ID
