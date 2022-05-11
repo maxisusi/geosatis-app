@@ -1,23 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { select, Store } from '@ngrx/store';
+import { Icon, icon, latLng, marker, tileLayer } from 'leaflet';
+import { Offender } from 'src/app/shared/application.models';
 import { AppState } from 'src/app/store/app.state';
+import { selectTotalIndex } from 'src/app/store/state/index/index.selectors';
 import {
   selectAllOffenders,
   selectByPagination,
-  selectPaginatedOffenders,
 } from 'src/app/store/state/offenders/offenders.selectors';
-import {
-  circle,
-  Icon,
-  icon,
-  latLng,
-  marker,
-  polygon,
-  tileLayer,
-} from 'leaflet';
-import { Offender } from 'src/app/shared/application.models';
-import { selectTotalIndex } from 'src/app/store/state/index/index.selectors';
 
 @Component({
   selector: 'app-offenders-map',
@@ -115,7 +105,6 @@ export class OffendersMapComponent implements OnInit {
 
   /**
    * Creates the marker and push them on the map
-   *
    * @param offenders
    * @returns put the marker list inside the layer params of leaflet
    */
