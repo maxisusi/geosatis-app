@@ -5,19 +5,30 @@ import { Observable } from 'rxjs';
 import { Offender } from '../shared/application.models';
 import { v4 as uuidv4 } from 'uuid';
 
+interface OffenderForm {
+  $key: string;
+  firstName: string;
+  lastName: string;
+  birthdate: string;
+  location: number;
+  imgURL: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class OffendersService {
-  private apiUrl = 'http://localhost:4500/offenders';
-  constructor(private http: HttpClient) {}
-
+  // todo put the url on .env file
+  apiUrl = 'http://localhost:4500/offenders';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
     }),
   };
 
+  constructor(private http: HttpClient) {}
+
+  // * Initialize form input and validation
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
     firstName: new FormControl('', [Validators.required]),
@@ -27,6 +38,7 @@ export class OffendersService {
     imgURL: new FormControl(''),
   });
 
+  // * Reset the form
   initalizeFormGroup(): void {
     this.form.reset({
       $key: null,
@@ -50,16 +62,17 @@ export class OffendersService {
     });
   }
 
+  // * Return the state of validation of the form
   validateForm(): boolean {
     return this.form.valid;
   }
 
+  //todo fix args
   getOffenders(index: number): Observable<Offender[]> {
     return this.http.get<Offender[]>(this.apiUrl);
   }
 
-  //todo: Update this function to prevent regenerate id
-  getFormData(): any {
+  getFormData(): OffenderForm {
     return this.form.getRawValue();
   }
 

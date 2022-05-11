@@ -103,12 +103,11 @@ export class CreateOffendersModalComponent implements OnInit {
     // * Checks if the form is valid
     if (this.offenders.validateForm()) {
       // * Checks if the user wants to update an offender
-
-      //todo Add type definition
       if (this.data) {
         const { birthdate, firstName, imgURL, lastName, location, $key } =
           this.offenders.getFormData();
 
+        // * Format the offender
         const offender = {
           id: $key,
           firstName,
@@ -122,7 +121,6 @@ export class CreateOffendersModalComponent implements OnInit {
 
       // * Checks if the user wants to create an offender
       else {
-        //todo Add type definition
         const { birthdate, firstName, lastName, location, imgURL } =
           this.offenders.getFormData();
 
@@ -140,6 +138,7 @@ export class CreateOffendersModalComponent implements OnInit {
           profileImage = imgURL;
         }
 
+        // * Format the offender
         const offender = {
           id: uuidv4(),
           firstName,
