@@ -12,58 +12,69 @@ import { selectAllOffenders } from 'src/app/store/state/offenders/offenders.sele
 })
 export class OffendersPaginationComponent implements OnInit {
   pageIndex: number = 0;
-  disabledBack!: boolean;
-  disabledFront!: boolean;
+  disabledBackButton!: boolean;
+  disabledNextButton!: boolean;
   pageLimit!: number;
   pageDisplayLimit: number = 5;
   allOffenders$ = this.store.pipe(select(selectAllOffenders));
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.disabledBack = true;
+    this.disabledBackButton = true;
 
+    this.initPagination();
+  }
+
+  /**
+   * Initialize the pagination system
+   * Defines how many page to create
+   */
+
+  initPagination(): void {
     this.allOffenders$.subscribe((offenders: Offender[]) => {
-      // * Define the page limit for pagination
+      // * Defines the number of page to create
       this.pageLimit =
         offenders.length % this.pageDisplayLimit === 0
           ? Math.floor(offenders.length / this.pageDisplayLimit) - 1
           : Math.floor(offenders.length / this.pageDisplayLimit);
 
-      // * If index of the current page is equal or greater than the page limit, freeze front button
+      // * If index of the current page is equal or greater than the page limit, freeze next button
       if (this.pageIndex >= this.pageLimit) {
-        this.disabledFront = true;
+        this.disabledNextButton = true;
       } else {
-        this.disabledFront = false;
+        this.disabledNextButton = false;
       }
     });
   }
 
+  // * Triggers when user click on the back button <-
   back(): void {
     this.pageIndex -= 1;
-    this.disabledFront = false;
+    this.disabledNextButton = false;
 
-    // * If the index of the page reaches 0 disable back button
+    // * If the index of the page reaches 0, disable back button
     if (this.pageIndex === 0) {
-      this.disabledBack = true;
+      this.disabledBackButton = true;
       this.store.dispatch(onPageChange({ index: this.pageIndex }));
     } else {
-      this.disabledBack = false;
+      this.disabledBackButton = false;
       this.store.dispatch(onPageChange({ index: this.pageIndex }));
     }
   }
 
-  front(): void {
+  // * Triggers when user click on the next button ->
+  next(): void {
     this.pageIndex += 1;
 
-    // * If the index of the page reaches 0 disable back button
+    // * If the index of the page reaches 0, disable back button
     if (this.pageIndex > 0) {
-      this.disabledBack = false;
+      this.disabledBackButton = false;
       this.store.dispatch(onPageChange({ index: this.pageIndex }));
     }
 
-    // * If the index of page reaches the page limit, disable front button
+    // * If the index of page reaches the page limit, disable next button
     if (this.pageIndex === this.pageLimit) {
-      this.disabledFront = true;
+      this.disabledNextButton = true;
     }
   }
 }

@@ -22,13 +22,13 @@ export class OffendersListComponent implements OnInit {
   ngOnInit(): void {}
 
   openEditModal(id: any): void {
-    let editOffenderData: Offender | undefined;
+    let offender!: Offender;
 
-    // * Get Data with selector
+    // * Get Offender by ID - Used to update offender
     const data$ = this.store.select(getOffenderById(id));
-    data$.subscribe((data) => (editOffenderData = data));
+    data$.subscribe((offenderData) => (offender = offenderData));
 
-    // * Open Modal with payload
-    this.dialog.open(CreateOffendersModalComponent, { data: editOffenderData });
+    // * Open Modal with payload to populate it
+    this.dialog.open(CreateOffendersModalComponent, { data: offender });
   }
 }

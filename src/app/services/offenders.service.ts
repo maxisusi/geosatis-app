@@ -1,23 +1,37 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormGroup, FormControl, Validator, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Offender } from '../shared/application.models';
-import { v4 as uuidv4 } from 'uuid';
+
+interface OffenderForm {
+  $key: string;
+  firstName: string;
+  lastName: string;
+  birthdate: string;
+  location: number;
+  imgURL: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class OffendersService {
-  private apiUrl = 'http://localhost:4500/offenders';
-  constructor(private http: HttpClient) {}
-
+  // todo put the url on .env file
+  apiUrl = 'http://localhost:4500/offenders';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
     }),
   };
 
+  constructor(private http: HttpClient) {}
+
+  /**
+   * Helper functions
+   */
+
+  // * Initialize form input and validation
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
     firstName: new FormControl('', [Validators.required]),
@@ -27,6 +41,12 @@ export class OffendersService {
     imgURL: new FormControl(''),
   });
 
+  // * Return the state of validation of the form
+  validateForm(): boolean {
+    return this.form.valid;
+  }
+
+  // * Reset the form
   initalizeFormGroup(): void {
     this.form.reset({
       $key: null,
@@ -50,17 +70,17 @@ export class OffendersService {
     });
   }
 
-  validateForm(): boolean {
-    return this.form.valid;
-  }
-
-  getOffenders(index: number): Observable<Offender[]> {
-    return this.http.get<Offender[]>(this.apiUrl);
-  }
-
-  //todo: Update this function to prevent regenerate id
-  getFormData(): any {
+  // * Collect the data from the form - Espacially used to populate the modal for updating an offender
+  getFormData(): OffenderForm {
     return this.form.getRawValue();
+  }
+
+  /**
+   * API CALLS
+   */
+
+  getOffenders(): Observable<Offender[]> {
+    return this.http.get<Offender[]>(this.apiUrl);
   }
 
   createOffender(offender: Offender): Observable<Offender> {
