@@ -15,14 +15,9 @@ import { OffendersPaginationComponent } from './components/offenders-pagination/
 import { CreateOffendersModalComponent } from './components/create-offenders-modal/create-offenders-modal.component';
 import { OffendersService } from './services/offenders.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { StoreModule } from '@ngrx/store';
-import { offenderReducer } from './store/state/offenders/offenders.reducer';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
-import { EffectsModule } from '@ngrx/effects';
-import { OffendersEffect } from './store/state/offenders/offenders.effects';
 import { HttpClientModule } from '@angular/common/http';
-import { indexReducer } from './store/state/index/index.reducer';
+
+import { StoreModuleApp } from './store/store.module';
 
 @NgModule({
   declarations: [
@@ -43,12 +38,7 @@ import { indexReducer } from './store/state/index/index.reducer';
     LeafletModule,
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forRoot({ offenders: offenderReducer, index: indexReducer }),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-      logOnly: environment.production,
-    }),
-    EffectsModule.forRoot([OffendersEffect]),
+    StoreModuleApp,
   ],
   providers: [OffendersService],
   bootstrap: [AppComponent],

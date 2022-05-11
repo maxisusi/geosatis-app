@@ -41,7 +41,6 @@ export class OffendersEffect {
   );
 
   // * Run this function everytime a AddOffender action is dispatched
-
   addOffender$ = createEffect(
     () =>
       this.actions$.pipe(
@@ -55,7 +54,6 @@ export class OffendersEffect {
   );
 
   // * Run this function everytime a UpdateOffender action is dispatched
-
   updateOffender$ = createEffect(
     () =>
       this.actions$.pipe(
