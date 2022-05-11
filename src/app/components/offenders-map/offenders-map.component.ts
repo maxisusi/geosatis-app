@@ -64,7 +64,6 @@ export class OffendersMapComponent implements OnInit {
 
   updateView(checkedValue: any): void {
     this.isSlideChecked = checkedValue.checked;
-
     if (!this.isSlideChecked) {
       console.log('Select PAgination');
       // * Subscribe to get datas from offender store

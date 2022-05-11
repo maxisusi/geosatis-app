@@ -110,8 +110,10 @@ export class CreateOffendersModalComponent implements OnInit {
           location: this.locations[location - 1],
         };
         this.store.dispatch(updateOffender({ payload: finalOffender }));
-      } else {
-        const { birthdate, firstName, lastName, location } =
+      }
+      // * Create offender
+      else {
+        const { birthdate, firstName, lastName, location, imgURL } =
           this.offenders.getFormData();
 
         // * Object redefinition
