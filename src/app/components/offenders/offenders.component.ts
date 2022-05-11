@@ -13,6 +13,7 @@ import { selectByPagination } from 'src/app/store/state/offenders/offenders.sele
   styleUrls: ['./offenders.component.css'],
 })
 export class OffendersComponent implements OnInit {
+  // * Set up offender selector and observable
   private indexPage$ = this.store.pipe(select(selectTotalIndex));
   public allOffenders$!: Observable<Offender[]>;
 
@@ -21,7 +22,6 @@ export class OffendersComponent implements OnInit {
   ngOnInit(): void {
     // * Dispatch loading offender list
     this.store.dispatch(loadOffenders());
-
     this.indexPage$.subscribe((index) => {
       this.allOffenders$ = this.store.pipe(select(selectByPagination(index)));
     });

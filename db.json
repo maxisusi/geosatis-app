@@ -7,11 +7,11 @@
       "birthdate": "",
       "imgURL": "https://source.unsplash.com/551x536/?face",
       "location": {
-        "id": 1,
-        "value": "Geosatis - Le Noirmont",
+        "id": 6,
+        "value": "Base - Vevey",
         "coordinates": {
-          "lat": 47.22758152838231,
-          "long": 6.957354031577179
+          "lat": 46.46194244121148,
+          "long": 6.840651156969183
         }
       }
     },
@@ -52,11 +52,11 @@
       "birthdate": "",
       "imgURL": "https://source.unsplash.com/618x405/?face",
       "location": {
-        "id": 5,
-        "value": "University Campus of Geneva",
+        "id": 11,
+        "value": "The Pentagon",
         "coordinates": {
-          "lat": 46.187049353791274,
-          "long": 6.159023910244823
+          "lat": 38.87269209521415,
+          "long": -77.05622398413922
         }
       }
     },

@@ -22,7 +22,7 @@ export class OffendersListComponent implements OnInit {
   ngOnInit(): void {}
 
   openEditModal(id: any): void {
-    let offender: Offender | undefined;
+    let offender!: Offender;
 
     // * Get Offender by ID - Used to update offender
     const data$ = this.store.select(getOffenderById(id));

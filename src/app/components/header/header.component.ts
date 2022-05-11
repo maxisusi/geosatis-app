@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Moment, MomentTimezone } from 'moment-timezone';
-import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import * as moment from 'moment-timezone';
 import { interval } from 'rxjs';
 
@@ -10,25 +8,24 @@ import { interval } from 'rxjs';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
-
-  date: any = new Date();
+  todayDate: any = new Date();
   ticker$ = interval(1000);
   selectedTimeZone = 'Europe/Madrid';
+  constructor() {}
 
-  // * Add timezone
+  // * Timezone list available
   timezoneList = [
     { name: 'Europe / Madrid', code: 'Europe/Madrid' },
     { name: 'America / New York', code: 'America/New_York' },
   ];
 
-  selectTimeZone(timezone: any): void {
-    this.selectedTimeZone = timezone;
-  }
-
   ngOnInit(): void {
     this.ticker$.subscribe(() => {
-      this.date = moment().tz(this.selectedTimeZone).format('h:mm:ss a');
+      this.todayDate = moment().tz(this.selectedTimeZone).format('h:mm:ss a');
     });
+  }
+
+  selectTimeZone(timezone: any): void {
+    this.selectedTimeZone = timezone;
   }
 }
