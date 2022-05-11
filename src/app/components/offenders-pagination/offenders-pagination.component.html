@@ -2,13 +2,13 @@
 </mat-paginator> -->
 
 <div class="offenders-pagination">
-    <button [disabled]="disabled" class="offenders-pagination-button" (click)="back()">
+    <button [disabled]="disabledBack" class="offenders-pagination-button" (click)="back()">
         <mat-icon>
             keyboard_arrow_left
         </mat-icon>
     </button>
     <div class="offenders-pagination-index">{{pageIndex + 1}}</div>
-    <button class="offenders-pagination-button" (click)="front()">
+    <button [disabled]="disabledFront" class="offenders-pagination-button" (click)="front()">
         <mat-icon>
             keyboard_arrow_right
         </mat-icon>
