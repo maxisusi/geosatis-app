@@ -26,17 +26,63 @@ export class CreateOffendersModalComponent implements OnInit {
   locations = [
     {
       id: 1,
-      value: 'Location 1',
-      location: { lat: 4.22222, long: 2.3333 },
+      value: 'Geosatis - Le Noirmont',
+      coordinates: { lat: 47.22758152838231, long: 6.957354031577179 },
     },
     {
       id: 2,
-      value: 'Location 2',
-      location: { lat: 8.22222, long: 1.3333 },
+      value: 'Geosatis - Lausanne',
+      coordinates: { lat: 46.518092188316984, long: 6.562308695565504 },
     },
-    { id: 3, value: 'Location 3' },
-    { lat: 2.22222, long: 9.3333 },
+    {
+      id: 3,
+      value: 'Bière Barracks',
+      coordinates: { lat: 46.52969568324943, long: 6.338179910221164 },
+    },
+    {
+      id: 4,
+      value: 'Bure Barracks',
+      coordinates: { lat: 47.45313434792769, long: 7.010516505371007 },
+    },
+    {
+      id: 5,
+      value: 'University Campus of Geneva',
+      coordinates: { lat: 46.187049353791274, long: 6.159023910244823 },
+    },
+
+    {
+      id: 6,
+      value: 'Base - Vevey',
+      coordinates: { lat: 46.46194244121148, long: 6.840651156969183 },
+    },
+    {
+      id: 7,
+      value: 'Sport Center - Verbier',
+      coordinates: { lat: 46.09926011768908, long: 7.21985050034541 },
+    },
+    {
+      id: 8,
+      value: 'Sport Center - Verbier',
+      coordinates: { lat: 46.09926011768908, long: 7.21985050034541 },
+    },
+    {
+      id: 9,
+      value: 'Versegeres Village',
+      coordinates: { lat: 46.0634926426249, long: 7.2372679239936675 },
+    },
+    {
+      id: 10,
+      value: 'Area 51',
+      coordinates: { lat: 37.2431, long: 115.793 },
+    },
+    {
+      id: 11,
+      value: 'The Pentagon',
+      coordinates: { lat: 38.87269209521415, long: -77.05622398413922 },
+    },
   ];
+  selected = 'The Pentagon';
+
   ngOnInit(): void {
     // Reset form
     this.offenders.initalizeFormGroup();
@@ -44,6 +90,7 @@ export class CreateOffendersModalComponent implements OnInit {
     // * If there are some datas, inject them insde the modal
     if (this.data) {
       this.offenders.populateFormGroup(this.data);
+      console.log(this.data);
     }
   }
   onSubmit(): void {
@@ -60,15 +107,11 @@ export class CreateOffendersModalComponent implements OnInit {
           lastName,
           birthdate,
           imgURL,
-          location,
+          location: this.locations[location - 1],
         };
-
-        console.log(finalOffender);
         this.store.dispatch(updateOffender({ payload: finalOffender }));
       } else {
-        // * Dispatch action to create an offender
-
-        const { birthdate, firstName, imgURL, lastName, location, $key } =
+        const { birthdate, firstName, lastName, location } =
           this.offenders.getFormData();
 
         // * Object redefinition
@@ -84,14 +127,7 @@ export class CreateOffendersModalComponent implements OnInit {
             Math.random() * (700 - 1000 + 1) +
             700
           ).toFixed()}/?face`,
-          location: {
-            lat: ` ${Math.random() * (40 - 50 + 1) + 43}.${
-              Math.random() * (0 - 2 + 1) + 0
-            }`,
-            long: `${Math.random() * (3 - 7 + 1) + 6}.${
-              Math.random() * (0 - 2 + 1) + 0
-            }`,
-          },
+          location: this.locations[location - 1],
         };
 
         this.store.dispatch(addOffender({ payload: finalOffender }));

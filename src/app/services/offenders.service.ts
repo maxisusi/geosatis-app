@@ -23,7 +23,7 @@ export class OffendersService {
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', Validators.required),
     birthdate: new FormControl(''),
-    location: new FormControl('', Validators.required),
+    location: new FormControl(null, Validators.required),
     imgURL: new FormControl(''),
   });
 
@@ -33,7 +33,7 @@ export class OffendersService {
       fullName: '',
       lastName: '',
       birthdate: '',
-      location: '',
+      location: null,
       imgURL: '',
     });
   }
@@ -45,7 +45,7 @@ export class OffendersService {
       firstName: offenders.firstName,
       lastName: offenders.lastName,
       birthdate: offenders.birthdate,
-      location: offenders.location,
+      location: offenders.location.id,
       imgURL: offenders.imgURL,
     });
   }

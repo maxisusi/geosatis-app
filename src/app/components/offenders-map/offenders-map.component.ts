@@ -64,19 +64,17 @@ export class OffendersMapComponent implements OnInit {
   updateView(checkedValue: boolean): void {
     if (!checkedValue) {
       // * Subscribe to get datas from offender store
-      console.log(checkedValue);
       this.indexPage$.subscribe((index) => {
         this.store
           .pipe(select(selectByPagination(index)))
           .subscribe((offenders: Offender[]) => {
-            console.log('Select paginated');
             // * Reset markers list
             this.markerList = [];
             offenders.map((offender) => {
               const singleMarker = marker(
                 [
-                  parseFloat(offender.location.lat),
-                  parseFloat(offender.location.long),
+                  offender.location.coordinates.lat,
+                  offender.location.coordinates.long,
                 ],
                 {
                   icon: icon({
@@ -95,14 +93,13 @@ export class OffendersMapComponent implements OnInit {
     } else {
       // * Subscribe to get datas from offender store
       this.selectAllOffender$.subscribe((offenders: Offender[]) => {
-        console.log('Select all');
         // * Reset markers list
         this.markerList = [];
         offenders.map((offender) => {
           const singleMarker = marker(
             [
-              parseFloat(offender.location.lat),
-              parseFloat(offender.location.long),
+              offender.location.coordinates.lat,
+              offender.location.coordinates.long,
             ],
             {
               icon: icon({

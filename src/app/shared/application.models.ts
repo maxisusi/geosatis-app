@@ -9,8 +9,14 @@ export interface Offender {
 }
 
 export interface Location {
-  lat: string;
-  long: string;
+  id: number;
+  value: string;
+  coordinates: Coordinates;
+}
+
+interface Coordinates {
+  lat: number;
+  long: number;
 }
 
 export interface PaginatedResult<T> {
