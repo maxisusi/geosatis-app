@@ -100,14 +100,13 @@ export class CreateOffendersModalComponent implements OnInit {
         const { birthdate, firstName, imgURL, lastName, location, $key } =
           this.offenders.getFormData();
 
-        const index = this.locations.findIndex((loc) => loc.id === location);
         const finalOffender = {
           id: $key,
           firstName,
           lastName,
           birthdate,
           imgURL,
-          location: this.locations[index],
+          location: this.locations[location - 1],
         };
         this.store.dispatch(updateOffender({ payload: finalOffender }));
       } else {
