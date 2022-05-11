@@ -15,7 +15,7 @@ export const removeOffender = createAction(
 // * Update an offender
 export const updateOffender = createAction(
   '[Offender Page] Update Offender',
-  props<{ payload: Offender }>()
+  props<{ payload: any }>()
 );
 
 export const loadOffenders = createAction(

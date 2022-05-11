@@ -28,58 +28,58 @@ export class CreateOffendersModalComponent implements OnInit {
     {
       id: 1,
       value: 'Geosatis - Le Noirmont',
-      location: { lat: 47.22758152838231, long: 6.957354031577179 },
+      coordinates: { lat: 47.22758152838231, long: 6.957354031577179 },
     },
     {
       id: 2,
       value: 'Geosatis - Lausanne',
-      location: { lat: 46.518092188316984, long: 6.562308695565504 },
+      coordinates: { lat: 46.518092188316984, long: 6.562308695565504 },
     },
     {
       id: 3,
       value: 'Bière Barracks',
-      location: { lat: 46.52969568324943, long: 6.338179910221164 },
+      coordinates: { lat: 46.52969568324943, long: 6.338179910221164 },
     },
     {
       id: 4,
       value: 'Bure Barracks',
-      location: { lat: 47.45313434792769, long: 7.010516505371007 },
+      coordinates: { lat: 47.45313434792769, long: 7.010516505371007 },
     },
     {
       id: 5,
       value: 'University Campus of Geneva',
-      location: { lat: 46.187049353791274, long: 6.159023910244823 },
+      coordinates: { lat: 46.187049353791274, long: 6.159023910244823 },
     },
 
     {
       id: 6,
       value: 'Base - Vevey',
-      location: { lat: 46.46194244121148, long: 6.840651156969183 },
+      coordinates: { lat: 46.46194244121148, long: 6.840651156969183 },
     },
     {
       id: 7,
       value: 'Sport Center - Verbier',
-      location: { lat: 46.09926011768908, long: 7.21985050034541 },
+      coordinates: { lat: 46.09926011768908, long: 7.21985050034541 },
     },
     {
       id: 8,
       value: 'Sport Center - Verbier',
-      location: { lat: 46.09926011768908, long: 7.21985050034541 },
+      coordinates: { lat: 46.09926011768908, long: 7.21985050034541 },
     },
     {
       id: 9,
       value: 'Versegeres Village',
-      location: { lat: 46.0634926426249, long: 7.2372679239936675 },
+      coordinates: { lat: 46.0634926426249, long: 7.2372679239936675 },
     },
     {
       id: 10,
       value: 'Area 51',
-      location: { lat: 37.2431, long: 115.793 },
+      coordinates: { lat: 37.2431, long: 115.793 },
     },
     {
       id: 11,
       value: 'The Pentagon',
-      location: { lat: 38.87269209521415, long: -77.05622398413922 },
+      coordinates: { lat: 38.87269209521415, long: -77.05622398413922 },
     },
   ];
   ngOnInit(): void {
@@ -89,6 +89,13 @@ export class CreateOffendersModalComponent implements OnInit {
     // * If there are some datas, inject them insde the modal
     if (this.data) {
       this.offenders.populateFormGroup(this.data);
+
+      const id = this.locations.map((location) => {
+        location.id;
+      });
+
+      console.log(this.data.location);
+      console.log(id);
     }
   }
   onSubmit(): void {
@@ -105,10 +112,8 @@ export class CreateOffendersModalComponent implements OnInit {
           lastName,
           birthdate,
           imgURL,
-          location,
+          location: this.locations[location],
         };
-
-        console.log(finalOffender);
         this.store.dispatch(updateOffender({ payload: finalOffender }));
       } else {
         // * Dispatch action to create an offender
@@ -131,7 +136,7 @@ export class CreateOffendersModalComponent implements OnInit {
             Math.random() * (700 - 1000 + 1) +
             700
           ).toFixed()}/?face`,
-          location: this.locations[location].location,
+          location: this.locations[location],
         };
 
         this.store.dispatch(addOffender({ payload: finalOffender }));

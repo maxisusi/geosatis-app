@@ -9,6 +9,12 @@ export interface Offender {
 }
 
 export interface Location {
+  id: number;
+  value: string;
+  coordinates: Coordinates;
+}
+
+interface Coordinates {
   lat: number;
   long: number;
 }

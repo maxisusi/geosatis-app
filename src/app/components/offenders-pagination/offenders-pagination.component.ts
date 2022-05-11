@@ -29,9 +29,6 @@ export class OffendersPaginationComponent implements OnInit {
           ? Math.floor(offenders.length / this.pageDisplayLimit) - 1
           : Math.floor(offenders.length / this.pageDisplayLimit);
 
-      console.log('Page index', this.pageIndex);
-      console.log('Page Limit', this.pageLimit);
-
       // * If index of the current page is equal or greater than the page limit, freeze front button
       if (this.pageIndex >= this.pageLimit) {
         this.disabledFront = true;
