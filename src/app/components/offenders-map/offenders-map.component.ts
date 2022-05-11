@@ -74,10 +74,7 @@ export class OffendersMapComponent implements OnInit {
             this.markerList = [];
             offenders.map((offender) => {
               const singleMarker = marker(
-                [
-                  parseFloat(offender.location.lat),
-                  parseFloat(offender.location.long),
-                ],
+                [offender.location.lat, offender.location.long],
                 {
                   icon: icon({
                     ...Icon.Default.prototype.options,
@@ -100,10 +97,7 @@ export class OffendersMapComponent implements OnInit {
         this.markerList = [];
         offenders.map((offender) => {
           const singleMarker = marker(
-            [
-              parseFloat(offender.location.lat),
-              parseFloat(offender.location.long),
-            ],
+            [offender.location.lat, offender.location.long],
             {
               icon: icon({
                 ...Icon.Default.prototype.options,

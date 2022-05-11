@@ -9,6 +9,7 @@ import {
   updateOffender,
 } from 'src/app/store/state/offenders/offenders.actions';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Offender } from 'src/app/shared/application.models';
 
 @Component({
   selector: 'app-create-offenders-modal',
@@ -115,6 +116,8 @@ export class CreateOffendersModalComponent implements OnInit {
         const { birthdate, firstName, imgURL, lastName, location, $key } =
           this.offenders.getFormData();
 
+        // const locationData = this.locations[getLocationIndex].location
+
         // * Object redefinition
         const finalOffender = {
           id: uuidv4(),
@@ -128,14 +131,7 @@ export class CreateOffendersModalComponent implements OnInit {
             Math.random() * (700 - 1000 + 1) +
             700
           ).toFixed()}/?face`,
-          location: {
-            lat: ` ${Math.random() * (40 - 50 + 1) + 43}.${
-              Math.random() * (0 - 2 + 1) + 0
-            }`,
-            long: `${Math.random() * (3 - 7 + 1) + 6}.${
-              Math.random() * (0 - 2 + 1) + 0
-            }`,
-          },
+          location: this.locations[location].location,
         };
 
         this.store.dispatch(addOffender({ payload: finalOffender }));

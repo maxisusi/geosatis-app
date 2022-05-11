@@ -4,7 +4,7 @@ import { Offender } from '../../../shared/application.models';
 // * Add an offender
 export const addOffender = createAction(
   '[Offender Page] Add Offender',
-  props<{ payload: Offender }>()
+  props<{ payload: any }>()
 );
 
 // * Remove an offender
