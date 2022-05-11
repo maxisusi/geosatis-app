@@ -33,6 +33,9 @@ export class OffendersMapComponent implements OnInit {
   private indexPage$ = this.store.pipe(select(selectTotalIndex));
   public allOffenders$!: Observable<Offender[]>;
 
+  layers = [];
+  isSlideChecked: boolean = false;
+
   markerList: any = [];
   options = {
     layers: [
@@ -41,7 +44,7 @@ export class OffendersMapComponent implements OnInit {
         attribution: '...',
       }),
     ],
-    zoom: 3.5,
+    zoom: 7.5,
     center: latLng(46.8182, 8.2275),
   };
 
@@ -59,17 +62,20 @@ export class OffendersMapComponent implements OnInit {
     overlays: {},
   };
 
-  layers = [];
+  updateView(checkedValue: any): void {
+    this.isSlideChecked = checkedValue.checked;
 
-  updateView(checkedValue: boolean): void {
-    if (!checkedValue) {
+    if (!this.isSlideChecked) {
+      console.log('Select PAgination');
       // * Subscribe to get datas from offender store
+
       this.indexPage$.subscribe((index) => {
         this.store
           .pipe(select(selectByPagination(index)))
           .subscribe((offenders: Offender[]) => {
             // * Reset markers list
             this.markerList = [];
+            this.isSlideChecked = false;
             offenders.map((offender) => {
               const singleMarker = marker(
                 [
@@ -87,12 +93,14 @@ export class OffendersMapComponent implements OnInit {
               );
               this.markerList.push(singleMarker);
             });
-            this.layers = this.markerList;
+            return (this.layers = this.markerList);
           });
       });
     } else {
       // * Subscribe to get datas from offender store
+
       this.selectAllOffender$.subscribe((offenders: Offender[]) => {
+        console.log('SelectAll');
         // * Reset markers list
         this.markerList = [];
         offenders.map((offender) => {
@@ -113,7 +121,7 @@ export class OffendersMapComponent implements OnInit {
           this.markerList.push(singleMarker);
         });
 
-        this.layers = this.markerList;
+        return (this.layers = this.markerList);
       });
     }
   }

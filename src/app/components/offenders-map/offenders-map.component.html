@@ -3,7 +3,7 @@
         [leafletLayersControl]="layersControl" [leafletLayers]="layers">
     </div>
 
-    <mat-slide-toggle #toggleBtn color="primary" (change)="updateView(toggleBtn.checked)">
+    <mat-slide-toggle [checked]="isSlideChecked" color="primary" (change)="updateView($event)">
         Show All Offenders
     </mat-slide-toggle>
 </div>

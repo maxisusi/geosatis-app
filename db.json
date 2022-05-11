@@ -2,10 +2,115 @@
   "offenders": [
     {
       "id": "1edf1124-8de3-44d3-812a-93340080ace1",
-      "firstName": "MAx",
-      "lastName": "balej",
+      "firstName": "Max",
+      "lastName": "Balej",
       "birthdate": "",
       "imgURL": "https://source.unsplash.com/551x536/?face",
+      "location": {
+        "id": 1,
+        "value": "Geosatis - Le Noirmont",
+        "coordinates": {
+          "lat": 47.22758152838231,
+          "long": 6.957354031577179
+        }
+      }
+    },
+    {
+      "id": "ac266779-890c-4e4d-9e47-012dc9ee8d56",
+      "firstName": "Karl",
+      "lastName": "Balej",
+      "birthdate": "",
+      "imgURL": "https://source.unsplash.com/681x634/?face",
+      "location": {
+        "id": 2,
+        "value": "Geosatis - Lausanne",
+        "coordinates": {
+          "lat": 46.518092188316984,
+          "long": 6.562308695565504
+        }
+      }
+    },
+    {
+      "id": "b0a4bc08-b083-452b-9c7b-3bd4638d36e2",
+      "firstName": "John",
+      "lastName": "Lennon",
+      "birthdate": "",
+      "imgURL": "https://source.unsplash.com/700x666/?face",
+      "location": {
+        "id": 4,
+        "value": "Bure Barracks",
+        "coordinates": {
+          "lat": 47.45313434792769,
+          "long": 7.010516505371007
+        }
+      }
+    },
+    {
+      "id": "2b4e5d14-48cf-436e-9ec0-1298ca01ab5e",
+      "firstName": "Lois",
+      "lastName": "Lara",
+      "birthdate": "",
+      "imgURL": "https://source.unsplash.com/618x405/?face",
+      "location": {
+        "id": 5,
+        "value": "University Campus of Geneva",
+        "coordinates": {
+          "lat": 46.187049353791274,
+          "long": 6.159023910244823
+        }
+      }
+    },
+    {
+      "id": "b4cb3306-2ef5-4aa2-8dcf-e9dff777cca9",
+      "firstName": "Daniel",
+      "lastName": "Gossier",
+      "birthdate": "",
+      "imgURL": "https://source.unsplash.com/567x538/?face",
+      "location": {
+        "id": 9,
+        "value": "Versegeres Village",
+        "coordinates": {
+          "lat": 46.0634926426249,
+          "long": 7.2372679239936675
+        }
+      }
+    },
+    {
+      "id": "f706d383-99e4-45db-bf50-53f7113a9af3",
+      "firstName": "Loretta",
+      "lastName": "Bruchey",
+      "birthdate": "",
+      "imgURL": "https://source.unsplash.com/574x448/?face",
+      "location": {
+        "id": 10,
+        "value": "Area 51",
+        "coordinates": {
+          "lat": 37.2431,
+          "long": 115.793
+        }
+      }
+    },
+    {
+      "id": "66a42385-72e6-4bc5-b1fc-f69c87af52cf",
+      "firstName": "Lois",
+      "lastName": "Dubois",
+      "birthdate": "",
+      "imgURL": "https://source.unsplash.com/641x404/?face",
+      "location": {
+        "id": 8,
+        "value": "Sport Center - Verbier",
+        "coordinates": {
+          "lat": 46.09926011768908,
+          "long": 7.21985050034541
+        }
+      }
+    },
+    {
+      "id": "fd022185-984e-4443-ad93-b61d5c77bdcb",
+      "firstName": "Darbellay",
+      "lastName": "Dubnois",
+      "birthdate": "",
+      "imgURL": "https://source.unsplash.com/659x518/?face",
       "location": {
         "id": 6,
         "value": "Base - Vevey",
