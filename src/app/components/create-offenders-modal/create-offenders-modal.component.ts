@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
 import { v4 as uuidv4 } from 'uuid';
+
 import {
   addOffender,
   updateOffender,
@@ -23,6 +24,7 @@ export class CreateOffendersModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
+  // * Locations list that the user can select
   locations = [
     {
       id: 1,
@@ -81,27 +83,33 @@ export class CreateOffendersModalComponent implements OnInit {
       coordinates: { lat: 38.87269209521415, long: -77.05622398413922 },
     },
   ];
-  selected = 'The Pentagon';
 
   ngOnInit(): void {
-    // Reset form
+    // * Reset form
     this.offenders.initalizeFormGroup();
 
-    // * If there are some datas, inject them insde the modal
+    // * If user wants to update offender's data, inject them insde the modal
     if (this.data) {
       this.offenders.populateFormGroup(this.data);
-      console.log(this.data);
     }
   }
+
+  /**
+   * Submit the modal form
+   * This function either creates a new offender or update one
+   */
+
   onSubmit(): void {
-    // * If the form is valid, dispatch data, reset form and close modal
+    // * Checks if the form is valid
     if (this.offenders.validateForm()) {
-      // * If true, dispatch action to update offender
+      // * Checks if the user wants to update an offender
+
+      //todo Add type definition
       if (this.data) {
         const { birthdate, firstName, imgURL, lastName, location, $key } =
           this.offenders.getFormData();
 
-        const finalOffender = {
+        const offender = {
           id: $key,
           firstName,
           lastName,
@@ -109,30 +117,39 @@ export class CreateOffendersModalComponent implements OnInit {
           imgURL,
           location: this.locations[location - 1],
         };
-        this.store.dispatch(updateOffender({ payload: finalOffender }));
+        this.store.dispatch(updateOffender({ payload: offender }));
       }
-      // * Create offender
+
+      // * Checks if the user wants to create an offender
       else {
+        //todo Add type definition
         const { birthdate, firstName, lastName, location, imgURL } =
           this.offenders.getFormData();
 
-        // * Object redefinition
-        const finalOffender = {
-          id: uuidv4(),
-          firstName,
-          lastName,
-          birthdate,
-          imgURL: `https://source.unsplash.com/${(
+        // * Checks if the user added a custom image. If not, we add a placeholder from unsplash API
+        let profileImage: string;
+        if (!imgURL.length) {
+          profileImage = `https://source.unsplash.com/${(
             Math.random() * (700 - 1000 + 1) +
             700
           ).toFixed()}x${(
             Math.random() * (700 - 1000 + 1) +
             700
-          ).toFixed()}/?face`,
+          ).toFixed()}/?face`;
+        } else {
+          profileImage = imgURL;
+        }
+
+        const offender = {
+          id: uuidv4(),
+          firstName,
+          lastName,
+          birthdate,
+          imgURL: profileImage,
           location: this.locations[location - 1],
         };
 
-        this.store.dispatch(addOffender({ payload: finalOffender }));
+        this.store.dispatch(addOffender({ payload: offender }));
       }
 
       // * Reset form
