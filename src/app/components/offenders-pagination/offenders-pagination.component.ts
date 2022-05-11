@@ -26,7 +26,7 @@ export class OffendersPaginationComponent implements OnInit {
   }
 
   /**
-   * Initialize the pagination system :
+   * Initialize the pagination system
    * Defines how many page to create
    */
 

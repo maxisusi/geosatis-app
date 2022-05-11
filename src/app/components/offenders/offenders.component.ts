@@ -5,10 +5,7 @@ import { Offender } from 'src/app/shared/application.models';
 import { AppState } from 'src/app/store/app.state';
 import { selectTotalIndex } from 'src/app/store/state/index/index.selectors';
 import { loadOffenders } from 'src/app/store/state/offenders/offenders.actions';
-import {
-  selectByPagination,
-  selectPaginatedOffenders,
-} from 'src/app/store/state/offenders/offenders.selectors';
+import { selectByPagination } from 'src/app/store/state/offenders/offenders.selectors';
 
 @Component({
   selector: 'app-offenders',
