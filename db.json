@@ -149,6 +149,21 @@
           "long": 7.010516505371007
         }
       }
+    },
+    {
+      "id": "f596e365-a770-4935-9f5c-e3a0fc65d425",
+      "firstName": "test",
+      "lastName": "11",
+      "birthdate": "",
+      "imgURL": "https://source.unsplash.com/676x699/?face",
+      "location": {
+        "id": 6,
+        "value": "Base - Vevey",
+        "coordinates": {
+          "lat": 46.46194244121148,
+          "long": 6.840651156969183
+        }
+      }
     }
   ]
 }

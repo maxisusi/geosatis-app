@@ -18,7 +18,6 @@ import {
 } from 'leaflet';
 import { Offender } from 'src/app/shared/application.models';
 import { selectTotalIndex } from 'src/app/store/state/index/index.selectors';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-offenders-map',
@@ -27,14 +26,19 @@ import { Observable } from 'rxjs';
 })
 export class OffendersMapComponent implements OnInit {
   constructor(private readonly store: Store<AppState>) {}
-  public paginatedOffender$ = this.store.pipe(select(selectPaginatedOffenders));
-  public selectAllOffender$ = this.store.pipe(select(selectAllOffenders));
 
-  private indexPage$ = this.store.pipe(select(selectTotalIndex));
-  public allOffenders$!: Observable<Offender[]>;
+  // * Instanciate the selectors for the offenders
+  selectAllOffender$ = this.store.pipe(select(selectAllOffenders));
+  indexPage$ = this.store.pipe(select(selectTotalIndex));
+
+  // * Tracks and manipulate the toggle control
+  isSlideChecked: boolean = false;
+
+  /**
+   * Leaflet Params
+   */
 
   layers = [];
-  isSlideChecked: boolean = false;
 
   markerList: any = [];
   options = {
@@ -62,72 +66,71 @@ export class OffendersMapComponent implements OnInit {
     overlays: {},
   };
 
-  updateView(checkedValue: any): void {
-    this.isSlideChecked = checkedValue.checked;
-    if (!this.isSlideChecked) {
-      console.log('Select PAgination');
-      // * Subscribe to get datas from offender store
+  // * Configuration for the marker config
+  markerConfig = {
+    icon: icon({
+      ...Icon.Default.prototype.options,
+      iconUrl: 'assets/marker-icon.png',
+      iconRetinaUrl: 'assets/marker-icon-2x.png',
+      shadowUrl: 'assets/marker-shadow.png',
+    }),
+  };
 
+  ngOnInit(): void {
+    // * Initialize the "Show All Offenders" as false
+    this.updateView(false);
+  }
+
+  /**
+   * Generate and display the markers on the map.
+   * Decides if it displays the paginated list of offenders or all offenders
+   * @param checkedValue
+   */
+
+  updateView(checkedValue: boolean | any): void {
+    // * Set the toggle variable with the $event
+    this.isSlideChecked = checkedValue.checked;
+
+    // * Checks if we don't want to display all the offenders
+    if (!this.isSlideChecked) {
+      // * Get datas from the paginated list of offenders
       this.indexPage$.subscribe((index) => {
         this.store
           .pipe(select(selectByPagination(index)))
           .subscribe((offenders: Offender[]) => {
-            // * Reset markers list
-            this.markerList = [];
+            // * Triggers the slider to false if we are navigation to another page
             this.isSlideChecked = false;
-            offenders.map((offender) => {
-              const singleMarker = marker(
-                [
-                  offender.location.coordinates.lat,
-                  offender.location.coordinates.long,
-                ],
-                {
-                  icon: icon({
-                    ...Icon.Default.prototype.options,
-                    iconUrl: 'assets/marker-icon.png',
-                    iconRetinaUrl: 'assets/marker-icon-2x.png',
-                    shadowUrl: 'assets/marker-shadow.png',
-                  }),
-                }
-              );
-              this.markerList.push(singleMarker);
-            });
-            return (this.layers = this.markerList);
+
+            // * Pushes the coordinates to the marker list to display them on the map
+            this.displayMarkers(offenders);
           });
       });
     } else {
-      // * Subscribe to get datas from offender store
-
+      // * Get datas from all of our offenders
       this.selectAllOffender$.subscribe((offenders: Offender[]) => {
-        console.log('SelectAll');
-        // * Reset markers list
-        this.markerList = [];
-        offenders.map((offender) => {
-          const singleMarker = marker(
-            [
-              offender.location.coordinates.lat,
-              offender.location.coordinates.long,
-            ],
-            {
-              icon: icon({
-                ...Icon.Default.prototype.options,
-                iconUrl: 'assets/marker-icon.png',
-                iconRetinaUrl: 'assets/marker-icon-2x.png',
-                shadowUrl: 'assets/marker-shadow.png',
-              }),
-            }
-          );
-          this.markerList.push(singleMarker);
-        });
-
-        return (this.layers = this.markerList);
+        this.displayMarkers(offenders);
       });
     }
   }
 
-  ngOnInit(): void {
-    this.updateView(false);
-  }
+  /**
+   * Creates the marker and push them on the map
+   *
+   * @param offenders
+   * @returns put the marker list inside the layer params of leaflet
+   */
+  displayMarkers(offenders: Offender[]): void {
+    // * Reset markers list
+    this.markerList = [];
 
-  ngDoCheck(): void {}
+    offenders.map((offender: Offender) => {
+      // * Create markers and set a default visual configuration
+      const singleMarker = marker(
+        [offender.location.coordinates.lat, offender.location.coordinates.long],
+        { ...this.markerConfig }
+      );
+      this.markerList.push(singleMarker);
+    });
+    return (this.layers = this.markerList);
+  }
 }
