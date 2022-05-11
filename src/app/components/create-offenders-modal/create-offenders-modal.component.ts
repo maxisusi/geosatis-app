@@ -9,7 +9,6 @@ import {
   updateOffender,
 } from 'src/app/store/state/offenders/offenders.actions';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Offender } from 'src/app/shared/application.models';
 
 @Component({
   selector: 'app-create-offenders-modal',
@@ -82,6 +81,7 @@ export class CreateOffendersModalComponent implements OnInit {
       coordinates: { lat: 38.87269209521415, long: -77.05622398413922 },
     },
   ];
+
   ngOnInit(): void {
     // Reset form
     this.offenders.initalizeFormGroup();
@@ -89,13 +89,7 @@ export class CreateOffendersModalComponent implements OnInit {
     // * If there are some datas, inject them insde the modal
     if (this.data) {
       this.offenders.populateFormGroup(this.data);
-
-      const id = this.locations.map((location) => {
-        location.id;
-      });
-
-      console.log(this.data.location);
-      console.log(id);
+      console.log(this.data);
     }
   }
   onSubmit(): void {
@@ -106,22 +100,19 @@ export class CreateOffendersModalComponent implements OnInit {
         const { birthdate, firstName, imgURL, lastName, location, $key } =
           this.offenders.getFormData();
 
+        const index = this.locations.findIndex((loc) => loc.id === location);
         const finalOffender = {
           id: $key,
           firstName,
           lastName,
           birthdate,
           imgURL,
-          location: this.locations[location],
+          location: this.locations[index],
         };
         this.store.dispatch(updateOffender({ payload: finalOffender }));
       } else {
-        // * Dispatch action to create an offender
-
-        const { birthdate, firstName, imgURL, lastName, location, $key } =
+        const { birthdate, firstName, lastName, location } =
           this.offenders.getFormData();
-
-        // const locationData = this.locations[getLocationIndex].location
 
         // * Object redefinition
         const finalOffender = {
@@ -136,7 +127,7 @@ export class CreateOffendersModalComponent implements OnInit {
             Math.random() * (700 - 1000 + 1) +
             700
           ).toFixed()}/?face`,
-          location: this.locations[location],
+          location: this.locations[location - 1],
         };
 
         this.store.dispatch(addOffender({ payload: finalOffender }));
