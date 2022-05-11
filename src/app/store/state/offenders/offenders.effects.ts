@@ -1,8 +1,9 @@
-import { Action, Store } from '@ngrx/store';
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+import { catchError, from, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { OffendersService } from 'src/app/services/offenders.service';
 import { AppState } from '../../app.state';
-
-import { act, Actions, createEffect, ofType } from '@ngrx/effects';
 import {
   addOffender,
   loadOffenders,
@@ -10,18 +11,7 @@ import {
   loadOffendersSuccess,
   updateOffender,
 } from './offenders.actions';
-import {
-  catchError,
-  from,
-  map,
-  mergeMap,
-  of,
-  switchMap,
-  withLatestFrom,
-} from 'rxjs';
-import { Offender } from 'src/app/shared/application.models';
-import { Injectable } from '@angular/core';
-import { selectPaginatedOffenders } from './offenders.selectors';
+import { selectAllOffenders } from './offenders.selectors';
 
 @Injectable()
 export class OffendersEffect {
@@ -56,7 +46,7 @@ export class OffendersEffect {
     () =>
       this.actions$.pipe(
         ofType(addOffender),
-        withLatestFrom(this.store.select(selectPaginatedOffenders)),
+        withLatestFrom(this.store.select(selectAllOffenders)),
         switchMap(([action]) =>
           from(this.offendersService.createOffender(action.payload))
         )
@@ -70,7 +60,7 @@ export class OffendersEffect {
     () =>
       this.actions$.pipe(
         ofType(updateOffender),
-        withLatestFrom(this.store.select(selectPaginatedOffenders)),
+        withLatestFrom(this.store.select(selectAllOffenders)),
         switchMap(([action]) =>
           from(this.offendersService.updateOffender(action.payload))
         )

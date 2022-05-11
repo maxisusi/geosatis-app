@@ -2,7 +2,7 @@
   "offenders": [
     {
       "id": "1edf1124-8de3-44d3-812a-93340080ace1",
-      "firstName": "Max",
+      "firstName": "Maxaa",
       "lastName": "Balej",
       "birthdate": "",
       "imgURL": "https://source.unsplash.com/551x536/?face",
@@ -156,6 +156,36 @@
       "lastName": "11",
       "birthdate": "",
       "imgURL": "https://source.unsplash.com/676x699/?face",
+      "location": {
+        "id": 6,
+        "value": "Base - Vevey",
+        "coordinates": {
+          "lat": 46.46194244121148,
+          "long": 6.840651156969183
+        }
+      }
+    },
+    {
+      "id": "c5078698-853b-4150-87a7-eba596d6035f",
+      "firstName": "test",
+      "lastName": "12",
+      "birthdate": "",
+      "imgURL": "https://source.unsplash.com/479x540/?face",
+      "location": {
+        "id": 3,
+        "value": "Bière Barracks",
+        "coordinates": {
+          "lat": 46.52969568324943,
+          "long": 6.338179910221164
+        }
+      }
+    },
+    {
+      "id": "ea5d8669-f90d-4b75-a399-ff482e45892d",
+      "firstName": "New",
+      "lastName": "song",
+      "birthdate": "",
+      "imgURL": "https://source.unsplash.com/477x412/?face",
       "location": {
         "id": 6,
         "value": "Base - Vevey",
