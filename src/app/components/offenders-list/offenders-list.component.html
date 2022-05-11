@@ -8,8 +8,8 @@
                 <h3 class="offender-info-main">First Name: <strong>{{offender.firstName}} </strong></h3>
             </div>
             <div class="offender-info-text-block">
-                <h5 class="offender-info-secondary">Latitude: {{offender.location.lat}}</h5>
-                <h5 class="offender-info-secondary">Longitude: {{offender.location.long}}</h5>
+                <h5 class="offender-info-secondary">Latitude: {{(offender.location.lat).substring(0,9)}}</h5>
+                <h5 class="offender-info-secondary">Longitude: {{(offender.location.long).substring(0,9)}}</h5>
             </div>
         </div>
     </div>

@@ -64,7 +64,7 @@ export class OffendersMapComponent implements OnInit {
   updateView(checkedValue: boolean): void {
     if (!checkedValue) {
       // * Subscribe to get datas from offender store
-
+      console.log(checkedValue);
       this.indexPage$.subscribe((index) => {
         this.store
           .pipe(select(selectByPagination(index)))

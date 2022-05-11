@@ -9,7 +9,6 @@ import {
   updateOffender,
 } from 'src/app/store/state/offenders/offenders.actions';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Offender } from 'src/app/shared/application.models';
 
 @Component({
   selector: 'app-create-offenders-modal',

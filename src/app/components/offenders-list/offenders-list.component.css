@@ -1,3 +1,12 @@
+strong {
+  color: #001f4d;
+}
+
+h3,
+h5 {
+  color: #72798d;
+}
+
 .offender-card {
   width: 100%;
   display: flex;
@@ -7,6 +16,11 @@
   border: 1px solid #dee2e6;
   border-radius: 10px;
   margin-bottom: 10px;
+  transition: 0.2s all ease-in-out;
+}
+
+.offender-card:hover {
+  background-color: rgba(173, 181, 189, 0.25);
 }
 
 .offender-face {
@@ -18,7 +32,11 @@
 
 .offender-info-main,
 .offender-info-secondary {
-  margin-bottom: 0;
+  margin-bottom: -5px;
+}
+
+.offender-info-text-block {
+  margin-bottom: 10px;
 }
 
 .offender-info-wrapper {
