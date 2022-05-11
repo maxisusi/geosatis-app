@@ -81,6 +81,7 @@ export class CreateOffendersModalComponent implements OnInit {
       coordinates: { lat: 38.87269209521415, long: -77.05622398413922 },
     },
   ];
+  selected = 'The Pentagon';
 
   ngOnInit(): void {
     // Reset form

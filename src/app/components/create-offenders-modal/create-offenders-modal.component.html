@@ -4,33 +4,41 @@
         <input type="hidden" formControlName="$key" />
 
         <mat-form-field>
-            <input formControlName="firstName" type="text" matInput placeholder="First Name*">
+            <mat-label>First Name</mat-label>
+            <input formControlName="firstName" type="text" matInput>
             <mat-error>First Name is mandatory</mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input formControlName="lastName" type="text" matInput placeholder="Last Name*">
+            <mat-label>Last Name</mat-label>
+            <input formControlName="lastName" type="text" matInput>
             <mat-error>Last Name is mandatory</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <mat-select formControlName="location" placeholder="Select a location">
+            <mat-label>Select a location</mat-label>
+            <select matNativeControl formControlName="location">
 
-                <ng-container *ngFor="let location of locations">
-                    <mat-option value="{{location.id}}">{{location.value}}</mat-option>
+                <ng-container>
+                    <option *ngFor="let location of locations" value="{{location.id}}">{{location.value}}
+                    </option>
                 </ng-container>
-            </mat-select>
+            </select>
             <mat-error>Location is mandatory</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input formControlName="birthdate" matInput [matDatepicker]="picker" placeholder="Birthday Date" />
+            <mat-label>Birthday Date</mat-label>
+            <input formControlName="birthdate" matInput [matDatepicker]="picker" />
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
 
         </mat-form-field>
         <mat-form-field>
-            <input formControlName="imgURL" matInput placeholder="Profile Image">
+            <mat-label>Profile Image Link</mat-label>
+            <mat-hint>If not provided, the application generate an image as a placeholder</mat-hint>
+            <input formControlName="imgURL" matInput placeholder="www.exemple_image_link.com">
         </mat-form-field>
+
 
         <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Submit</button>
 

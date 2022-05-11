@@ -33,7 +33,7 @@ export class OffendersService {
       fullName: '',
       lastName: '',
       birthdate: '',
-      location: '',
+      location: null,
       imgURL: '',
     });
   }
