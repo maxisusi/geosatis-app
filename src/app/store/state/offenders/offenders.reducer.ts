@@ -1,4 +1,3 @@
-import { state } from '@angular/animations';
 import { createReducer, on } from '@ngrx/store';
 import { Offender } from 'src/app/shared/application.models';
 import {
@@ -38,16 +37,18 @@ export const offenderReducer = createReducer(
       (offender: Offender) => offender.id !== id
     ),
   })),
-  on(loadOffenders, (state) => ({
-    ...state,
-    status: 'loading',
-  })),
 
+  // * Update an offender
   on(updateOffender, (state, { payload }) => ({
     ...state,
     offenders: state.offenders.map((elem: Offender) =>
       elem.id === payload.id ? { ...payload } : elem
     ),
+  })),
+
+  on(loadOffenders, (state) => ({
+    ...state,
+    status: 'loading',
   })),
 
   // * Handle offender load success
