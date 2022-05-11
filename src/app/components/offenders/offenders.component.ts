@@ -23,7 +23,7 @@ export class OffendersComponent implements OnInit {
 
   ngOnInit(): void {
     // * Dispatch loading offender list
-    this.store.dispatch(loadOffenders({ index: 1 }));
+    this.store.dispatch(loadOffenders());
 
     this.indexPage$.subscribe((index) => {
       this.allOffenders$ = this.store.pipe(select(selectByPagination(index)));

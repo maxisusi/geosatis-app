@@ -18,10 +18,7 @@ export const updateOffender = createAction(
   props<{ payload: any }>()
 );
 
-export const loadOffenders = createAction(
-  '[Offender Page] Load Offenders',
-  props<{ index: number; showAll?: boolean }>()
-);
+export const loadOffenders = createAction('[Offender Page] Load Offenders');
 
 // * Handle offender load success
 export const loadOffendersSuccess = createAction(

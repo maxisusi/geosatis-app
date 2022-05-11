@@ -1,9 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormGroup, FormControl, Validator, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Offender } from '../shared/application.models';
-import { v4 as uuidv4 } from 'uuid';
 
 interface OffenderForm {
   $key: string;
@@ -28,6 +27,10 @@ export class OffendersService {
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * Helper functions
+   */
+
   // * Initialize form input and validation
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
@@ -37,6 +40,11 @@ export class OffendersService {
     location: new FormControl(null, Validators.required),
     imgURL: new FormControl(''),
   });
+
+  // * Return the state of validation of the form
+  validateForm(): boolean {
+    return this.form.valid;
+  }
 
   // * Reset the form
   initalizeFormGroup(): void {
@@ -62,18 +70,17 @@ export class OffendersService {
     });
   }
 
-  // * Return the state of validation of the form
-  validateForm(): boolean {
-    return this.form.valid;
-  }
-
-  //todo fix args
-  getOffenders(index: number): Observable<Offender[]> {
-    return this.http.get<Offender[]>(this.apiUrl);
-  }
-
+  // * Collect the data from the form - Espacially used to populate the modal for updating an offender
   getFormData(): OffenderForm {
     return this.form.getRawValue();
+  }
+
+  /**
+   * API CALLS
+   */
+
+  getOffenders(): Observable<Offender[]> {
+    return this.http.get<Offender[]>(this.apiUrl);
   }
 
   createOffender(offender: Offender): Observable<Offender> {

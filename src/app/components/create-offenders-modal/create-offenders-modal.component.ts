@@ -1,15 +1,13 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { OffendersService } from 'src/app/services/offenders.service';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { OffendersService } from 'src/app/services/offenders.service';
 import { AppState } from 'src/app/store/app.state';
-import { v4 as uuidv4 } from 'uuid';
-
 import {
   addOffender,
   updateOffender,
 } from 'src/app/store/state/offenders/offenders.actions';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-create-offenders-modal',
