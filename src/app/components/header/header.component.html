@@ -1,14 +1,14 @@
 <header>
-    
+
     <div class="logo">
-        <img src="/assets/Geosatis-logo.png" class="header-logo" />
+        <a target="_blank" href="https://geo-satis.com/">
+            <img src="/assets/Geosatis-logo.png" class="header-logo" />
+        </a>
     </div>
     <div class="header-menu">
         <p class="header-menu-info">Last updated: <span class="bold">{{todayDate}}</span>
         </p>
-        <button mat-icon-button color="white" aria-label="Example icon button with a menu icon">
-            <mat-icon>notifications icon</mat-icon>
-        </button>
+
         <button mat-icon-button color="white" [matMenuTriggerFor]="menu"
             aria-label="Example icon button with a menu icon">
             <mat-icon>person icon</mat-icon>

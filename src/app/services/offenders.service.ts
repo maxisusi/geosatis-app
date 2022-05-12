@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Offender } from '../shared/application.models';
 
 interface OffenderForm {
@@ -18,7 +19,7 @@ interface OffenderForm {
 })
 export class OffendersService {
   // todo put the url on .env file
-  apiUrl = 'http://localhost:4500/offenders';
+  apiUrl = environment.apiKey;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',

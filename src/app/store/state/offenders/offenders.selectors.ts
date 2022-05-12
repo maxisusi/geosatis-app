@@ -1,5 +1,6 @@
 import { createSelector } from '@ngrx/store';
 import { Offender } from 'src/app/shared/application.models';
+import { environment } from 'src/environments/environment';
 import { AppState } from '../../app.state';
 import { OffenderState } from './offenders.reducer';
 
@@ -23,7 +24,7 @@ export const selectByPagination = (index: number) =>
     selectOffenders,
 
     (state: OffenderState) => {
-      const limit = 5;
+      const limit = environment.pageLimit;
       let min;
       let max;
 
@@ -32,7 +33,7 @@ export const selectByPagination = (index: number) =>
         max = limit;
         return state.offenders.slice(min, max);
       } else {
-        max = (index + 1) * 5;
+        max = (index + 1) * limit;
         min = max - limit;
 
         return state.offenders.slice(min, max);

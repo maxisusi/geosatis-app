@@ -37,3 +37,13 @@
   padding: 0 1 0 1em;
   justify-content: space-between;
 }
+
+@media screen and (max-width: 1235px) {
+  .app-body-content {
+    flex-direction: column;
+  }
+
+  .app-body-offender-map {
+    flex: 1;
+  }
+}

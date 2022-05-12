@@ -62,8 +62,8 @@ export class CreateOffendersModalComponent implements OnInit {
     },
     {
       id: 8,
-      value: 'Sport Center - Verbier',
-      coordinates: { lat: 46.09926011768908, long: 7.21985050034541 },
+      value: 'Zurich',
+      coordinates: { lat: 47.477308863302575, long: 8.52251612352348 },
     },
     {
       id: 9,
