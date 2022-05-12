@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiKey: 'http://localhost:4500/offenders',
+  apiKey: 'http://localhost:4500/offenders?_sort=lastName',
   pageLimit: 5,
 };
 
