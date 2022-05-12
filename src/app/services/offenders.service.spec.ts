@@ -39,7 +39,7 @@ describe('OffendersService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should not validate the form', () => {
+  it('should not validate the form when missing values', () => {
     let failedOffenderMock: Offender = {
       id: '1edf1124-8de3-44d3-812a-93340080ace1',
       firstName: '',
@@ -57,5 +57,31 @@ describe('OffendersService', () => {
     };
     service.populateFormGroup(failedOffenderMock);
     expect(service.validateForm()).toBeFalse();
+  });
+
+  it('should validate the form ', () => {
+    service.populateFormGroup(offenderListMock);
+    expect(service.validateForm()).toBeTrue();
+  });
+
+  it('should reset the form', () => {
+    service.populateFormGroup(offenderListMock);
+    service.initalizeFormGroup();
+    expect(service.validateForm()).toBeFalse();
+  });
+
+  it('should get offenders datas from the Form', () => {
+    service.populateFormGroup(offenderListMock);
+
+    const offender = service.getFormData();
+    const expectedValue = {
+      $key: '1edf1124-8de3-44d3-812a-93340080ace1',
+      firstName: 'John',
+      lastName: 'Doe',
+      birthdate: '2022-05-01T22:00:00.000Z',
+      location: 6,
+      imgURL: 'https://source.unsplash.com/551x536/?face',
+    };
+    expect(offender).toEqual(expectedValue);
   });
 });
