@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "server": "json-server --watch db.json --port 4500"
+    "server": "json-server --watch db.json --port 4500",
+    "dev": "concurrently \"npm:start\" \"npm:server\" "
   },
   "private": true,
   "dependencies": {
@@ -26,6 +27,7 @@
     "@ngrx/effects": "^13.2.0",
     "@ngrx/store": "^13.2.0",
     "@ngrx/store-devtools": "^13.2.0",
+    "concurrently": "^7.1.0",
     "json-server": "^0.17.0",
     "leaflet": "^1.8.0",
     "moment": "^2.29.3",
