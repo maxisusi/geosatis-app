@@ -1,24 +1,26 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, tick } from '@angular/core/testing';
 import { OffendersService } from 'src/app/services/offenders.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { CreateOffendersModalComponent } from './create-offenders-modal.component';
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { Offender } from 'src/app/shared/application.models';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('CreateOffendersModalComponent', () => {
   let component: CreateOffendersModalComponent;
   let fixture: ComponentFixture<CreateOffendersModalComponent>;
+  let de: DebugElement;
 
   let httpClient: HttpClient;
   let httpHandler: HttpHandler;
-  // let store: MockStore;
 
   let offenderListMock: Offender = {
     id: '1edf1124-8de3-44d3-812a-93340080ace1',
-    firstName: 'Max',
-    lastName: 'balej',
-    birthdate: '01/10/22',
+    firstName: 'John',
+    lastName: 'Doe',
+    birthdate: '2022-05-01T22:00:00.000Z',
     imgURL: 'https://source.unsplash.com/551x536/?face',
     location: {
       id: 6,
@@ -43,10 +45,6 @@ describe('CreateOffendersModalComponent', () => {
       declarations: [CreateOffendersModalComponent],
     }).compileComponents();
 
-    // matData = TestBed.inject(MAT_DIALOG_DATA);
-
-    // store = TestBed.inject(MockStore);
-
     httpClient = TestBed.inject(HttpClient);
     httpHandler = TestBed.inject(HttpHandler);
   });
@@ -55,11 +53,32 @@ describe('CreateOffendersModalComponent', () => {
     fixture = TestBed.createComponent(CreateOffendersModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    de = fixture.debugElement;
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('validates the component', () => {});
+  it('should contains necessary form fields', () => {
+    const firstNameField: DebugElement = de.query(By.css('#FirstName'));
+    const lastName: DebugElement = de.query(By.css('#LastName'));
+    const location: DebugElement = de.query(By.css('#Location'));
+    const birthdate: DebugElement = de.query(By.css('#Birthday'));
+    const profileImage: DebugElement = de.query(By.css('#Image'));
+
+    expect(firstNameField).toBeTruthy();
+    expect(lastName).toBeTruthy();
+    expect(location).toBeTruthy();
+    expect(birthdate).toBeTruthy();
+    expect(profileImage).toBeTruthy();
+  });
+
+  it('should render an error message when fields are empty', () => {
+    component.onSubmit();
+    const errorMessage: DebugElement = de.query(By.css('mat-error'));
+    expect(errorMessage.nativeElement.innerText).toContain(
+      'First Name is mandatory'
+    );
+  });
 });

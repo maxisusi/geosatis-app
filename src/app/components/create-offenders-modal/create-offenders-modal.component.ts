@@ -93,8 +93,8 @@ export class CreateOffendersModalComponent implements OnInit {
   }
 
   /**
-   * Submit the modal form
-   * This function either creates a new offender or update one
+   * Submit the modal form.
+   * This function either creates a new offender or updates one
    */
 
   onSubmit(): void {

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 import { OffendersPaginationComponent } from './offenders-pagination.component';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('OffendersPaginationComponent', () => {
   let component: OffendersPaginationComponent;
@@ -8,10 +9,10 @@ describe('OffendersPaginationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [MatIconModule],
       providers: [provideMockStore({})],
-      declarations: [ OffendersPaginationComponent ]
-    })
-    .compileComponents();
+      declarations: [OffendersPaginationComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
