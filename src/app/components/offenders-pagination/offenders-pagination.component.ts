@@ -4,6 +4,7 @@ import { Offender } from 'src/app/shared/application.models';
 import { AppState } from 'src/app/store/app.state';
 import { onPageChange } from 'src/app/store/state/index/index.actions';
 import { selectAllOffenders } from 'src/app/store/state/offenders/offenders.selectors';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-offenders-pagination',
@@ -15,7 +16,7 @@ export class OffendersPaginationComponent implements OnInit {
   disabledBackButton!: boolean;
   disabledNextButton!: boolean;
   pageLimit!: number;
-  pageDisplayLimit: number = 5;
+  pageDisplayLimit: number = environment.pageLimit;
   allOffenders$ = this.store.pipe(select(selectAllOffenders));
   constructor(private store: Store<AppState>) {}
 

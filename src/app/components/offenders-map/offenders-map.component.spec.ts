@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideMockStore } from '@ngrx/store/testing';
 import { OffendersMapComponent } from './offenders-map.component';
 
 describe('OffendersMapComponent', () => {
@@ -8,9 +8,9 @@ describe('OffendersMapComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OffendersMapComponent ]
-    })
-    .compileComponents();
+      providers: [provideMockStore({})],
+      declarations: [OffendersMapComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
