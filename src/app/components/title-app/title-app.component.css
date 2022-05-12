@@ -1,0 +1,33 @@
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-block h1 {
+  font-size: 2.5rem;
+}
+
+.title-block p {
+  color: #8a92a6;
+}
+
+.title-button-parent {
+  display: flex;
+  gap: 10px;
+  font-size: 1rem;
+  background-color: #3a57e8;
+  color: white;
+  padding: 1em;
+  border-radius: 10px;
+  cursor: pointer;
+  align-items: center;
+  border-style: none;
+  transition: 0.3s ease-in-out;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.title-button-parent:hover {
+  background-color: #2137a7;
+  padding: 1.2em;
+}

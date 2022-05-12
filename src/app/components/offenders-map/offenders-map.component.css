@@ -1,0 +1,13 @@
+.offender-map {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-end;
+}
+.leaflet-mouse-marker {
+  height: 500px;
+  width: 500px;
+  background-color: red;
+}

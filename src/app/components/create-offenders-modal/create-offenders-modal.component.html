@@ -1,0 +1,45 @@
+<div class="offenders-form-wrapper">
+
+    <form [formGroup]="offenders.form" class="offenders-form">
+        <input type="hidden" formControlName="$key" />
+
+        <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input id="FirstName" formControlName="firstName" type="text" matInput>
+            <mat-error>First Name is mandatory</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input id="LastName" formControlName="lastName" type="text" matInput>
+            <mat-error>Last Name is mandatory</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Select a location</mat-label>
+            <select id="Location" matNativeControl formControlName="location">
+
+                <ng-container>
+                    <option *ngFor="let location of locations" value="{{location.id}}">{{location.value}}
+                    </option>
+                </ng-container>
+            </select>
+            <mat-error>Location is mandatory</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Birthday Date</mat-label>
+            <input id="Birthday" formControlName="birthdate" matInput [matDatepicker]="picker" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Profile Image Link</mat-label>
+            <mat-hint>If not provided, the application generate an image as a placeholder</mat-hint>
+            <input id="Image" formControlName="imgURL" matInput placeholder="www.exemple_image_link.com">
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Submit</button>
+
+    </form>
+
+</div>

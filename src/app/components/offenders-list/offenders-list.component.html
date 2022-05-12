@@ -1,0 +1,20 @@
+<div class="offender-card">
+    <div class="offender-info-wrapper">
+        <img class="offender-face" src={{offender.imgURL}} />
+        <div class="offender-info-text-wrapper">
+            <div class="offender-info-text-block">
+
+                <h3 class="offender-info-main">Last Name: <strong>{{offender.lastName}} </strong></h3>
+                <h3 class="offender-info-main">First Name: <strong>{{offender.firstName}} </strong></h3>
+            </div>
+            <div class="offender-info-text-block">
+                <h5 class="offender-info-secondary">Latitude: {{(offender.location.coordinates.lat).toFixed(5)}}</h5>
+                <h5 class="offender-info-secondary">Longitude: {{(offender.location.coordinates.lat).toFixed(5)}}</h5>
+            </div>
+        </div>
+    </div>
+    <button (click)="openEditModal(offender.id)" mat-icon-button color="white"
+        aria-label="Example icon button with a menu icon">
+        <mat-icon>edit icon</mat-icon>
+    </button>
+</div>

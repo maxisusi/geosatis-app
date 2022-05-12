@@ -1,0 +1,9 @@
+.offenders-form-wrapper {
+  width: 45vw;
+  height: 100%;
+}
+
+.offenders-form {
+  display: flex;
+  flex-direction: column;
+}

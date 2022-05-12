@@ -2,21 +2,29 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 1.5em;
   background-color: #3a57e8;
   color: white;
 }
 .header-logo {
-  width: 25%;
+  width: 35%;
+  min-width: 135px;
 }
 
 .header-menu {
   display: flex;
   align-items: baseline;
   gap: 25px;
+  justify-content: right;
+  width: 100%;
 }
 
 .header-menu-info {
   font-weight: 100;
+}
+
+@media screen and (max-width: 490px) {
+  .header-menu {
+    align-items: center;
+  }
 }

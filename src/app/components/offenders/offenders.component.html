@@ -1,0 +1,6 @@
+<div class="offenders">
+    <ng-container *ngFor="let offender of allOffenders$ | async; ">
+        <app-offenders-list [offender]="offender"></app-offenders-list>
+    </ng-container>
+
+</div>
