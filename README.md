@@ -73,7 +73,8 @@ ng test
 
 When I received the project details, I immediately launch **Milanote** to start planning the development process.
 
-#### Plannification 🗺
+### Plannification 🗺
+---
 
 First, I needed to understand all of the requirements of the project (**Features**, **UI**, **interactions**, ...) and then, I looked at the technologies needed to complete this project. It helped me build a strong foundation for all of the tasks and in which order I need to accomplish them.
 
@@ -81,13 +82,14 @@ Before starting to code, I wanted to create a quick design on **Figma**. Designi
 
 <img width="700" alt="Screenshot 2022-05-06 at 16 37 08" src="https://user-images.githubusercontent.com/65896178/167154970-5c0c8f96-39d2-4094-b119-733233ec6d4b.png">
 
->Figma Design
+*Figma Design**
 
 After creating a rough sketch, watch crash courses on Angular, and ngRx to better understand these technologies since I hardly used them in the past.
 
 My basic understanding of Angular and ngRx gave me enough confidence to start thinking about the architecture of the application.
 
-#### Application Architecture 🏠
+### Application Architecture 🏠
+---
 
 Creating a design system is long and I was very short on time so I decided to use **Material UI** to get components such as **Modals**, **Title bars**, and **selectors** to get the visual up and running as soon as possible. 
 
@@ -99,7 +101,9 @@ This idea was good and easier to implement but the problem was that the applicat
 
 Instead of that I took the hard road and decided to query only one time my server to retrieve all of the offenders and create a pagination system using "**Selectors**" from ngRx. To get this working, it meant that I also needed to store the current Index of the page on my Store to keep track of the changes on different components.
 
-#### What could I have done better ? 🤔
+### What could I have done better ? 🤔
+---
+
 I would spend a little bit more time creating a design for different screen size and adding interactions because I tried different implementations that made me loose a little bit of time. 
 
 ---
